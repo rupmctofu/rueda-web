@@ -1,36 +1,147 @@
-<section
-  class="bg-[url('landing-bg.svg')] bg-cover flex flex-col gap-6 items-center min-h-screen p-16 pt-[100px] text-gray-50"
->
-  <span class="mt-32 font-semibold text-2xl tracking-widest">LIDIA HIDALGO</span
-  >
-  <h1 class="font-title text-8xl leading-[80px]">
-    FORMACIÓN
-    <br />
-     CHAMÁNICA
-    <br />
-     Y MAESTRÍA
-  </h1>
+---
+import ArrowDown from "../icons/ArrowDown.astro";
+import Ornament from "../icons/Ornament.astro";
+---
 
-  <a
-    href="#contacto"
-    class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-8 py-2 font-semibold mt-10"
-    >RESERVAR</a
-  >
-  <img src="/arrow.svg" class="h-10 mt-10" alt="" />
-   <div class="flex bg-orange-500 w-1/2">
-    <div class="flex flex-col w-1/2 p-12 gap-4">
-      <h2 class="font-title text-4xl">
-        ¿Qué es una<br />
+<section
+  class="relative bg-[url('landing-bg.svg')] bg-cover flex flex-col gap-4 items-center min-h-screen text-gray-50"
+>
+  <header class="flex flex-col items-center gap-4 py-28">
+    <span class="mt-32 font-semibold text-2xl tracking-widest">
+      LIDIA HIDALGO
+    </span>
+
+    <h1 class="font-title text-9xl leading-[100px]">
+      FORMACIÓN
+      <br />
+       CHAMÁNICA
+      <br />
+       Y MAESTRÍA
+    </h1>
+
+    <a
+      href="#contacto"
+      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-12 py-2 font-semibold mt-20 hover:bg-gray-50 hover:text-gray-400 transition"
+    >
+      RESERVAR
+    </a>
+
+    <picture class="w-8 mt-20">
+      <ArrowDown />
+    </picture>
+
+    <picture class="absolute max-w-4xl w-full">
+      <img class="absolute w-full feathers f1" src="/f1.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f2" src="/f2.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f3" src="/f3.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f4" src="/f4.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f5" src="/f5.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f6" src="/f6.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f7" src="/f7.svg" alt="Feathers" />
+      <img class="absolute w-full feathers f8" src="/f8.svg" alt="Feathers" />
+    </picture>
+  </header>
+
+  <article class="relative flex bg-orange-500 max-w-5xl w-full mb-48">
+    <div class="flex flex-col w-[55%] justify-center gap-4 p-12">
+      <h2 class="font-title text-5xl">
+        ¿Qué es una
+        <br />
          Rueda Chamánica?
       </h2>
-      <p>
+
+      <p class="text-xl">
         La Rueda Chamánica de las Cuatro Direcciones es un programa que implica
         el descubrimiento de cuatro animales de poder y la exploración de cuatro
         direcciones a través de retiros.
       </p>
     </div>
-    <div class="flex">
-      <img src="/carrousel1.png" class="max-h-1500 object-cover object-left" alt="">
-    </div>
-  </div>
+
+    <picture class="w-[45%] ml-auto">
+      <img src="/carrousel1.png" alt="Rueda Chamánica" />
+    </picture>
+
+    <picture class="absolute w-full top-2">
+      <Ornament />
+    </picture>
+
+    <picture class="absolute w-full bottom-2 rotate-180">
+      <Ornament />
+    </picture>
+  </article>
 </section>
+
+<style>
+  .feathers {
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name: side;
+    transform: translateX(-100px) rotate(20deg);
+  }
+
+  .f1 {
+    left: -200px;
+    animation-delay: 0ms;
+    animation-duration: 6s;
+    opacity: 0.5;
+  }
+  .f2 {
+    top: -50px;
+    animation-delay: 500ms;
+    animation-duration: 7s;
+    opacity: 0.7;
+  }
+  .f3 {
+    top: -100px;
+    left: -300px;
+    animation-delay: 250ms;
+    animation-duration: 5s;
+    opacity: 0.5;
+  }
+  .f4 {
+    top: -100px;
+    left: 50px;
+    animation-delay: 750ms;
+    animation-duration: 7s;
+    opacity: 0.7;
+  }
+  .f5 {
+    top: -300px;
+    left: 50px;
+    animation-delay: 750ms;
+    animation-duration: 6s;
+    opacity: 0.5;
+  }
+  .f6 {
+    top: -300px;
+    left: 300px;
+    animation-delay: 250ms;
+    animation-duration: 5s;
+    opacity: 0.7;
+  }
+  .f7 {
+    top: -300px;
+    left: 0px;
+    animation-delay: 500ms;
+    animation-duration: 7s;
+    opacity: 0.5;
+  }
+  .f8 {
+    top: -300px;
+    left: 300px;
+    animation-delay: 0ms;
+    animation-duration: 6s;
+    opacity: 0.7;
+  }
+
+  @keyframes side {
+    0%,
+    100% {
+      transform: translateX(-100px) rotate(20deg);
+    }
+
+    50% {
+      transform: translateX(100px) rotate(0deg);
+    }
+  }
+</style>
