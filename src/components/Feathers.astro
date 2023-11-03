@@ -1,0 +1,85 @@
+<picture class="absolute max-w-4xl w-full">
+  <img class="absolute w-full feathers f1" src="/f1.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f2" src="/f2.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f3" src="/f3.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f4" src="/f4.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f5" src="/f5.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f6" src="/f6.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f7" src="/f7.svg" alt="Feathers" />
+  <img class="absolute w-full feathers f8" src="/f8.svg" alt="Feathers" />
+</picture>
+
+<style>
+  .feathers {
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name: side;
+    transform: translateX(-100px) rotate(20deg);
+  }
+
+  .f1 {
+    left: -50%;
+    animation-delay: 0ms;
+    animation-duration: 22s;
+    opacity: 0.5;
+  }
+  .f2 {
+    top: -50%;
+    animation-delay: 500ms;
+    animation-duration: 24s;
+    opacity: 0.7;
+  }
+  .f3 {
+    top: -70%;
+    left: -20%;
+    animation-delay: 250ms;
+    animation-duration: 20s;
+    opacity: 0.5;
+  }
+  .f4 {
+    top: -70%;
+    left: 20%;
+    animation-delay: 750ms;
+    animation-duration: 24s;
+    opacity: 0.7;
+  }
+  .f5 {
+    top: -300px;
+    left: 40%;
+    animation-delay: 750ms;
+    animation-duration: 22s;
+    opacity: 0.5;
+  }
+  .f6 {
+    top: -10%;
+    left: 40%;
+    animation-delay: 250ms;
+    animation-duration: 20s;
+    opacity: 0.7;
+  }
+  .f7 {
+    top: -20%;
+    left: 10%;
+    animation-delay: 500ms;
+    animation-duration: 24s;
+    opacity: 0.5;
+  }
+  .f8 {
+    top: -10%;
+    left: 50%;
+    animation-delay: 0ms;
+    animation-duration: 22s;
+    opacity: 0.7;
+  }
+
+  @keyframes side {
+    0%,
+    100% {
+      transform: translateX(-100px) rotate(20deg);
+    }
+
+    50% {
+      transform: translateX(100px) rotate(0deg);
+    }
+  }
+</style>

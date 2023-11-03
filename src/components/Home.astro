@@ -1,10 +1,11 @@
 ---
-import ArrowDown from "../icons/ArrowDown.astro";
-import Ornament from "../icons/Ornament.astro";
+import ArrowDown from "@/icons/ArrowDown.astro";
+import Ornament from "@/icons/Ornament.astro";
+import Feathers from "@/components/Feathers.astro";
 ---
 
 <section
-  class="relative bg-[url('landing-bg.svg')] bg-cover flex flex-col gap-4 items-center min-h-screen text-gray-50"
+  class="relative bg-[url('landing-bg.svg')] bg-cover flex flex-col gap-4 items-center text-gray-50"
 >
   <header class="flex flex-col items-center gap-4 py-28">
     <span class="mt-32 font-semibold text-2xl tracking-widest">
@@ -30,16 +31,7 @@ import Ornament from "../icons/Ornament.astro";
       <ArrowDown />
     </picture>
 
-    <picture class="absolute max-w-4xl w-full">
-      <img class="absolute w-full feathers f1" src="/f1.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f2" src="/f2.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f3" src="/f3.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f4" src="/f4.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f5" src="/f5.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f6" src="/f6.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f7" src="/f7.svg" alt="Feathers" />
-      <img class="absolute w-full feathers f8" src="/f8.svg" alt="Feathers" />
-    </picture>
+    <Feathers />
   </header>
 
   <article class="relative flex bg-orange-500 max-w-5xl w-full mb-48">
@@ -70,78 +62,3 @@ import Ornament from "../icons/Ornament.astro";
     </picture>
   </article>
 </section>
-
-<style>
-  .feathers {
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-name: side;
-    transform: translateX(-100px) rotate(20deg);
-  }
-
-  .f1 {
-    left: -200px;
-    animation-delay: 0ms;
-    animation-duration: 6s;
-    opacity: 0.5;
-  }
-  .f2 {
-    top: -50px;
-    animation-delay: 500ms;
-    animation-duration: 7s;
-    opacity: 0.7;
-  }
-  .f3 {
-    top: -100px;
-    left: -300px;
-    animation-delay: 250ms;
-    animation-duration: 5s;
-    opacity: 0.5;
-  }
-  .f4 {
-    top: -100px;
-    left: 50px;
-    animation-delay: 750ms;
-    animation-duration: 7s;
-    opacity: 0.7;
-  }
-  .f5 {
-    top: -300px;
-    left: 50px;
-    animation-delay: 750ms;
-    animation-duration: 6s;
-    opacity: 0.5;
-  }
-  .f6 {
-    top: -300px;
-    left: 300px;
-    animation-delay: 250ms;
-    animation-duration: 5s;
-    opacity: 0.7;
-  }
-  .f7 {
-    top: -300px;
-    left: 0px;
-    animation-delay: 500ms;
-    animation-duration: 7s;
-    opacity: 0.5;
-  }
-  .f8 {
-    top: -300px;
-    left: 300px;
-    animation-delay: 0ms;
-    animation-duration: 6s;
-    opacity: 0.7;
-  }
-
-  @keyframes side {
-    0%,
-    100% {
-      transform: translateX(-100px) rotate(20deg);
-    }
-
-    50% {
-      transform: translateX(100px) rotate(0deg);
-    }
-  }
-</style>

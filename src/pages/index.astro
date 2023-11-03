@@ -3,7 +3,6 @@ import Home from "../components/Home.astro";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import Direcciones from "../components/Direcciones.astro";
-import Img1 from "../components/Img1.astro";
 import Sur from "../components/Sur.astro";
 import Img2 from "../components/Img2.astro";
 import Oeste from "../components/Oeste.astro";
@@ -15,15 +14,16 @@ import Img5 from "../components/Img5.astro";
 import Maestria from "../components/Maestria.astro";
 import Img6 from "../components/Img6.astro";
 import Facilitadores from "../components/Facilitadores.astro";
+import ImgSur from "@/components/ImgSur.astro";
 ---
 
 <Layout title="Rueda Chamánica">
   <Navbar />
 
-  <main>
+  <main class="flex flex-col w-full">
     <Home />
     <Direcciones />
-    <Img1 />
+    <ImgSur />
     <Sur />
     <Img2 />
     <Oeste />
@@ -37,5 +37,3 @@ import Facilitadores from "../components/Facilitadores.astro";
     <Facilitadores />
   </main>
 </Layout>
-
-<style></style>
