@@ -1,0 +1,118 @@
+---
+import { directions } from "@/directions";
+import CardDo from "@/components/CardDo.astro";
+
+/* const {pretitle, title, subtitle, description, background, accent, footer, doCards, footerCards } = directions; */
+---
+
+<section
+  id="sur"
+  class="min-h-screen flex flex-col items-center bg-[url('/snake-bg.svg')] p-20"
+>
+  <header class="flex flex-col items-center text-center">
+    <span
+      class="bg-[#542626] font-semibold text-[#ea4b8b] text-md tracking-widest rounded-full px-6 py-1 -mb-4"
+    >
+      <slot name="pretitle" />
+    </span>
+
+    <h2 class="font-title text-slate-50 text-[140px] leading-none">
+      <slot name="title" />
+    </h2>
+    <h3 class="tracking-[20px] text-[#542626] font-semibold text-6xl mt-5">
+      <slot name="subtitle" />
+    </h3>
+    <p class="text-2xl font-title text-teal-50">
+      <slot name="description" />
+    </p>
+  </header>
+
+  <span
+    class="bg-[#542626] font-semibold text-[#ea4b8b] text-md tracking-widest rounded-full px-6 py-1 z-10 mt-20"
+  >
+    ¿QUÉ HARÁS?
+  </span>
+
+  <ul
+    class="max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden text-[#542626] w-full"
+  >
+    <li class="w-1/5 even:bg-gray-50">
+      <CardDo icon="/sur-do-1.svg">
+        <strong class="font-semibold">Trabajarás tres temas</strong> de tu vida
+        que te restan poder personal
+      </CardDo>
+    </li>
+    <li class="w-1/5 even:bg-gray-50">
+      <CardDo icon="/sur-do-2.svg">
+        Temas emocionales, físicos o mentales, que quedaron <strong
+          class="font-semibold">bloqueados o estancados.</strong
+        >
+      </CardDo>
+    </li>
+    <li class="w-1/5 even:bg-gray-50">
+      <CardDo icon="/sur-do-3.svg">
+        <strong class="font-semibold">Mandalas energéticos</strong> y espacio
+        sagrado.
+      </CardDo>
+    </li>
+    <li class="w-1/5 even:bg-gray-50">
+      <CardDo icon="/sur-do-4.svg">
+        Aprenderás <strong class="font-semibold">técnicas ancestrales</strong>,
+        que borran las huellas de eso que te provocadolor y no te dejan avanzar.
+      </CardDo>
+    </li>
+    <li class="w-1/5 even:bg-gray-50">
+      <CardDo icon="/sur-do-5.svg">
+        Entrarás en el <strong class="font-semibold"
+          >vientre de la madre tierra</strong
+        > (TEMAZCAL) a recordar EL POR QUÉ de tu presencia en este plano.
+      </CardDo>
+    </li>
+  </ul>
+
+  <div class="flex items-center w-full max-w-6xl py-5 mt-20">
+    <span class="flex grow h-[2px] bg-[#542626]"></span>
+    <span
+      class="flex-shrink mx-4 text-xl font-semibold tracking-[5px] text-[#542626]"
+    >
+      CONSEGUIRÁS
+    </span>
+    <span class="flex grow h-[2px] bg-[#542626]"></span>
+  </div>
+
+  <ul class="flex flex-row flex-wrap w-full max-w-6xl mt-6 text-slate-50">
+    <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+      <img src="/sur-con-1.svg" class="w-24 aspect-square" alt="Icon" />
+      <p class="text-xl">
+        Ser feliz, encontrar la paz y la libertad que anhelas, relacionarte con
+        almas que han decidido por afinidad, hacer este camino a tu lado,
+        abrirte y confiar más en ti. <span class="font-semibold"
+          >YA NADA SERÁ IGUAL.</span
+        >
+      </p>
+    </li>
+    <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+      <img src="/sur-con-2.svg" class="w-24 aspect-square" alt="Icon" />
+      <p class="text-xl">
+        Poder compartir <span class="font-semibold">técnicas ancestrales</span>
+         y adaptadas a nuestra evolución.
+      </p>
+    </li>
+    <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+      <img src="/sur-con-3.svg" class="w-24 aspect-square" alt="Icon" />
+      <p class="text-xl">
+        Iniciaciones que provienen de los Andes y que han sido compartidas, para
+        que las <span class="font-semibold">semillas de sanación</span>
+         se puedan expandir.
+      </p>
+    </li>
+    <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+      <img src="/sur-con-4.svg" class="w-24 aspect-square" alt="Icon" />
+      <p class="text-xl">
+        <span class="font-semibold">Bandas de poder y karpais</span>
+         (semillas energéticas), que te proporcionarán fuerza y valentía para
+        afrontar las enseñanzas que la vida te tiene preparada.
+      </p>
+    </li>
+  </ul>
+</section>
