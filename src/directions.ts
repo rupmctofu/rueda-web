@@ -150,107 +150,90 @@ export const directions = [
     image: "/temazcal.jpg",
     pretitle: "CUARTA DIRECCIÓN",
     title: "ESTE",
-    subtitle: "SACHAMAMA",
-    description: "El camino del sanador y la sanadora heridos",
-    background: "/snake-bg.svg",
-    accentBg: "#542626",
-    accentText: "#ea4b8b",
-    footer: "CONSEGUIRÁS",
+    subtitle: "ÁGUILA Y CÓNDOR",
+    description: "INTEGRACIÓN",
+    background: "/condor-bg.svg",
+    accentBg: "#7F59B0",
+    accentText: "#DDC7FF",
+    footer: "INTEGRAMOS",
     doCards: [
       {
         icon: "/este-do-1.svg",
-        html: `<strong class="font-semibold">Trabajarás tres temas</strong> de tu vida que te restan poder personal`,
+        html: `Aprender <strong class="font-semibold">alquimia Indígena</strong> y liberación de proyecciones.`,
       },
       {
         icon: "/este-do-2.svg",
-        html: `Temas emocionales, físicos o mentales, que quedaron <strong class="font-semibold">bloqueados o estancados.</strong>`,
+        html: `Iniciaciarte en el 4º nivel <strong class="font-semibold">KURACK AKUYACK.</strong>`,
       },
       {
         icon: "/este-do-3.svg",
-        html: `<strong class="font-semibold">Mandalas energéticos</strong> y espacio sagrado.`,
+        html: `Encontrar y reconocer <strong class="font-semibold">tu semilla Inca</strong> o de poder que está en ti.`,
       },
       {
         icon: "/este-do-4.svg",
-        html: `Aprenderás <strong class="font-semibold">técnicas ancestrales</strong>, que borran las huellas de eso que te provocadolor y no te dejan avanzar.`,
+        html: `Aprender la <strong class="font-semibold">gran Amaru</strong> y danza totémica con los animales de poder.
+        `,
       },
       {
         icon: "/este-do-5.svg",
-        html: `Entrarás en el <strong class="font-semibold">vientre de la madre tierra</strong> (TEMAZCAL) a recordar EL POR QUÉ de tu presencia en este plano.`,
+        html: `<strong class="font-semibold">Gran ceremonia final</strong>, tu mesa se viste de abundancia y fiesta.`,
       },
     ],
     footerCards: [
       {
         icon: "/este-con-1.svg",
-        html: `Ser feliz, encontrar la paz y la libertad que anhelas, relacionarte con almas que han decidido por afinidad, hacer este camino a tu lado, abrirte y confiar más en ti. <strong class="font-semibold">YA NADA SERÁ IGUAL.</strong>`,
-      },
-      {
-        icon: "/este-con-2.svg",
-        html: `Poder compartir <strong class="font-semibold">técnicas ancestrales</strong> y adaptadas a nuestra evolución.`,
+        html: `En el <strong class="font-semibold">Sur</strong>, encaramos y nos deshacemos de nuestras heridas personales.`,
       },
       {
         icon: "/este-con-3.svg",
-        html: `Iniciaciones que provienen de los Andes y que han sido compartidas, para que las <strong class="font-semibold">semillas de sanación</strong> se puedan expandir.`,
+        html: `En el <strong class="font-semibold">Norte</strong>, reconocemos nuestra sabiduría y la integramos.`,
+      },
+      {
+        icon: "/este-con-2.svg",
+        html: `En el <strong class="font-semibold">Oeste</strong>, nos empoderamos y desprendemos de todo los que no nos deja reconocernos y ser nosotros y nosotras.`,
       },
       {
         icon: "/este-con-4.svg",
-        html: `<strong class="font-semibold">Bandas de poder y karpais</strong> (semillas energéticas), que te proporcionarán fuerza y valentía para afrontar las enseñanzas que la vida te tiene preparada.`,
+        html: `En el <strong class="font-semibold">Este</strong>, el lugar del sabio, la visionaria y el visionario ya pueden volar. El sabio no nace, se hace.`,
       },
       {
         icon: "/este-con-5.svg",
-        html: `<strong class="font-semibold">Bandas de poder y karpais</strong> (semillas energéticas), que te proporcionarán fuerza y valentía para afrontar las enseñanzas que la vida te tiene preparada.`,
+        html: `Ahora, tu <strong class="font-semibold">mesa medicinal</strong> y tu <strong class="font-semibold">mesa estelar</strong> están completas`,
       },
     ],
   },
   {
+    image: "/mishas.jpg",
     pretitle: "DIRECCIÓN",
     title: "MAESTRÍA",
-    background: "/snake-bg.svg",
-    accentBg: "#542626",
-    accentText: "#ea4b8b",
-    footer: "CONSEGUIRÁS",
+    background: "/maestria-bg.svg",
+    accentBg: "#48284C",
+    accentText: "#F44A9F",
+    footer: "MUY IMPORTANTE",
     doCards: [
       {
-        icon: "/este-do-1.svg",
+        icon: "/maestria-do-1.svg",
         html: `<strong class="font-semibold">Trabajarás tres temas</strong> de tu vida que te restan poder personal`,
       },
       {
-        icon: "/este-do-2.svg",
+        icon: "/maestria-do-2.svg",
         html: `Temas emocionales, físicos o mentales, que quedaron <strong class="font-semibold">bloqueados o estancados.</strong>`,
       },
       {
-        icon: "/este-do-3.svg",
+        icon: "/maestria-do-3.svg",
         html: `<strong class="font-semibold">Mandalas energéticos</strong> y espacio sagrado.`,
       },
       {
-        icon: "/este-do-4.svg",
+        icon: "/maestria-do-4.svg",
         html: `Aprenderás <strong class="font-semibold">técnicas ancestrales</strong>, que borran las huellas de eso que te provocadolor y no te dejan avanzar.`,
       },
       {
-        icon: "/este-do-5.svg",
+        icon: "/maestria-do-5.svg",
         html: `Entrarás en el <strong class="font-semibold">vientre de la madre tierra</strong> (TEMAZCAL) a recordar EL POR QUÉ de tu presencia en este plano.`,
       },
     ],
     footerCards: [
-      {
-        icon: "/este-con-1.svg",
-        html: `Ser feliz, encontrar la paz y la libertad que anhelas, relacionarte con almas que han decidido por afinidad, hacer este camino a tu lado, abrirte y confiar más en ti. <strong class="font-semibold">YA NADA SERÁ IGUAL.</strong>`,
-      },
-      {
-        icon: "/este-con-2.svg",
-        html: `Poder compartir <strong class="font-semibold">técnicas ancestrales</strong> y adaptadas a nuestra evolución.`,
-      },
-      {
-        icon: "/este-con-3.svg",
-        html: `Iniciaciones que provienen de los Andes y que han sido compartidas, para que las <strong class="font-semibold">semillas de sanación</strong> se puedan expandir.`,
-      },
-      {
-        icon: "/este-con-4.svg",
-        html: `<strong class="font-semibold">Bandas de poder y karpais</strong> (semillas energéticas), que te proporcionarán fuerza y valentía para afrontar las enseñanzas que la vida te tiene preparada.`,
-      },
-      {
-        icon: "/este-con-5.svg",
-        html: `<strong class="font-semibold">Bandas de poder y karpais</strong> (semillas energéticas), que te proporcionarán fuerza y valentía para afrontar las enseñanzas que la vida te tiene preparada.`,
-      },
+  
     ],
   },
 ];
