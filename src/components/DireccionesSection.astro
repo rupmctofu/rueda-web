@@ -3,101 +3,87 @@ import { directions } from "@/directions";
 import CardDo from "@/components/CardDo.astro";
 ---
 
-{
-  directions.map((direction) => {
-    const {
-      image,
-      pretitle,
-      title,
-      subtitle,
-      description,
-      html,
-      background,
-      accentBg,
-      accentText,
-      footer,
-      doCards,
-      footerCards,
-    } = direction;
+<Fragment>
+  {
+    directions.map((direction) => {
+      const {
+        image,
+        pretitle,
+        title,
+        subtitle,
+        description,
+        html,
+        background,
+        footer,
+        doCards,
+        footerCards,
+      } = direction;
 
-    return (
-      <>
-        <picture class="wfull">
-          <img
-            class="w-full aspect-[10/3] object-cover"
-            src={image}
-            alt={title}
+      return (
+        <>
+          <div
+            class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}
           />
-        </picture>
 
-        <section
-          id="sur"
-          class={`min-h-screen flex flex-col items-center bg-[url('${background}')] bg-no-repeat bg-cover p-20`}
-        >
-          <header class="flex flex-col items-center text-center">
-            <span
-              class={`bg-[${accentBg}] font-semibold text-[${accentText}] text-md tracking-widest rounded-full px-6 py-1 -mb-4`}
-            >
-              {pretitle}
+          <section
+            id="sur"
+            class={`min-h-screen flex flex-col items-center bg-[url('${background}')] bg-no-repeat bg-cover p-20`}
+          >
+            <header class="flex flex-col items-center text-center">
+              <span class="bg-black font-semibold text-gray-50 text-md tracking-widest rounded-full px-6 py-1 -mb-4">
+                {pretitle}
+              </span>
+
+              <h2 class="font-title text-slate-50 text-[140px] leading-none">
+                {title}
+              </h2>
+              <h3 class="tracking-[20px] text-black/70 font-semibold text-6xl mt-5">
+                {subtitle}
+              </h3>
+              <p class="text-2xl font-title text-teal-50">{description}</p>
+              {html && (
+                <p
+                  class="max-w-5xl leading-6 mt-6 text-xl text-teal-50"
+                  set:html={html}
+                />
+              )}
+            </header>
+
+            <span class="bg-black font-semibold text-gray-50 text-md tracking-widest rounded-full px-6 py-1 z-10 mt-20">
+              ¿QUÉ HARÁS?
             </span>
 
-            <h2 class="font-title text-slate-50 text-[140px] leading-none">
-              {title}
-            </h2>
-            <h3
-              class={`tracking-[20px] text-[${accentBg}] font-semibold text-6xl mt-5`}
-            >
-              {subtitle}
-            </h3>
-            <p class="text-2xl font-title text-teal-50">{description}</p>
-            {html && (
-              <p
-                class="max-w-5xl leading-6 mt-6 text-xl text-teal-50"
-                set:html={html}
-              />
-            )}
-          </header>
+            <ul class="max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden w-full">
+              {doCards.map(({ icon, html }) => (
+                <li class="grow basis-0 even:bg-gray-50">
+                  <CardDo icon={icon}>
+                    <Fragment set:html={html} />
+                  </CardDo>
+                </li>
+              ))}
+            </ul>
 
-          <span
-            class={`bg-[${accentBg}] font-semibold text-[${accentText}] text-md tracking-widest rounded-full px-6 py-1 z-10 mt-20`}
-          >
-            ¿QUÉ HARÁS?
-          </span>
+            <div class="flex items-center w-full max-w-6xl py-5 mt-20">
+              <span class={`flex grow h-[2px] bg-black`} />
+              <span class="flex-shrink mx-4 text-xl font-semibold tracking-[5px] text-black">
+                {footer}
+              </span>
+              <span class={`flex grow h-[2px] bg-black`} />
+            </div>
 
-          <ul
-            class={`max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden w-full`}
-          >
-            {doCards.map(({ icon, html }) => (
-              <li class="grow basis-0 even:bg-gray-50">
-                <CardDo icon={icon}>
-                  <Fragment set:html={html} />
-                </CardDo>
-              </li>
-            ))}
-          </ul>
-
-          <div class="flex items-center w-full max-w-6xl py-5 mt-20">
-            <span class={`flex grow h-[2px] bg-[${accentBg}]`} />
-            <span
-              class={`flex-shrink mx-4 text-xl font-semibold tracking-[5px] text-[${accentBg}]`}
-            >
-              {footer}
-            </span>
-            <span class={`flex grow h-[2px] bg-[${accentBg}]`} />
-          </div>
-
-          <ul class="flex flex-row flex-wrap w-full max-w-6xl mt-6 text-slate-50">
-            {footerCards.map(({ icon, html }) => (
-              <li class="flex flex-row items-start w-1/2 gap-6 p-6">
-                <img src={icon} class="w-24 aspect-square" alt="Icon" />
-                <p class="text-xl">
-                  <Fragment set:html={html} />
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </>
-    );
-  })
-}
+            <ul class="flex flex-row flex-wrap w-full max-w-6xl mt-6 text-slate-50">
+              {footerCards.map(({ icon, html }) => (
+                <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+                  <img src={icon} class="w-24 aspect-square" alt="Icon" />
+                  <p class="text-xl">
+                    <Fragment set:html={html} />
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      );
+    })
+  }
+</Fragment>

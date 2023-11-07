@@ -1,13 +1,11 @@
 export const directions = [
   {
-    image: "/fuego.jpg",
+    image: "bg-sur-image",
     pretitle: "PRIMERA DIRECCIÓ",
     title: "SUR",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
     background: "/snake-bg.svg",
-    accentBg: "#542626",
-    accentText: "#ea4b8b",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -51,14 +49,12 @@ export const directions = [
     ],
   },
   {
-    image: "/lucia.jpg",
+    image: "bg-oeste-image",
     pretitle: "SEGUNDA DIRECCIÓ",
     title: "OESTE",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
     background: "/jaguar-bg.svg",
-    accentBg: "#3a3230",
-    accentText: "#fbb03b",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -75,8 +71,7 @@ export const directions = [
       },
       {
         icon: "/oeste-do-4.svg",
-        html: `Observamos las situaciones y las personas <strong class="font-semibold"> que nos restan paz</strong>, con un trabajo en la naturaleza, conectando con tu ser.
-        .`,
+        html: `Observamos las situaciones y las personas <strong class="font-semibold"> que nos restan paz</strong>, con un trabajo en la naturaleza, conectando con tu ser.`,
       },
       {
         icon: "/oeste-do-5.svg",
@@ -95,15 +90,13 @@ export const directions = [
     ],
   },
   {
-    image: "/coca.jpg",
+    image: "bg-norte-image",
     pretitle: "TERCERA DIRECCIÓ",
     title: "NORTE",
     subtitle: "COLIBRÍ",
     description: "La dirección del y lA maestra interna",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
     background: "/colibri-bg.svg",
-    accentBg: "#3E5054",
-    accentText: "#63C5EA",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -147,14 +140,12 @@ export const directions = [
     ],
   },
   {
-    image: "/temazcal.jpg",
+    image: "bg-este-image",
     pretitle: "CUARTA DIRECCIÓN",
     title: "ESTE",
     subtitle: "ÁGUILA Y CÓNDOR",
     description: "INTEGRACIÓN",
     background: "/condor-bg.svg",
-    accentBg: "#7F59B0",
-    accentText: "#DDC7FF",
     footer: "INTEGRAMOS",
     doCards: [
       {
@@ -213,27 +204,25 @@ export const directions = [
     doCards: [
       {
         icon: "/maestria-do-1.svg",
-        html: `<strong class="font-semibold">Trabajarás tres temas</strong> de tu vida que te restan poder personal`,
+        html: `<strong class="font-semibold"Iniciaciones</strong> teóricas y prácticas.`,
       },
       {
         icon: "/maestria-do-2.svg",
-        html: `Temas emocionales, físicos o mentales, que quedaron <strong class="font-semibold">bloqueados o estancados.</strong>`,
+        html: `<strong class="font-semibold">Ciclos </strong>de la vida.`,
       },
       {
         icon: "/maestria-do-3.svg",
-        html: `<strong class="font-semibold">Mandalas energéticos</strong> y espacio sagrado.`,
+        html: `<strong class="font-semibold">Ritos</strong> de la edad.`,
       },
       {
         icon: "/maestria-do-4.svg",
-        html: `Aprenderás <strong class="font-semibold">técnicas ancestrales</strong>, que borran las huellas de eso que te provocadolor y no te dejan avanzar.`,
+        html: `Oficiar<strong class="font-semibold"> bodas</strong> chamánicas.`,
       },
       {
         icon: "/maestria-do-5.svg",
-        html: `Entrarás en el <strong class="font-semibold">vientre de la madre tierra</strong> (TEMAZCAL) a recordar EL POR QUÉ de tu presencia en este plano.`,
+        html: `Oficiar<strong class="font-semibold"> bautizos</strong> chamánicos.`,
       },
     ],
-    footerCards: [
-  
-    ],
+    footerCards: [],
   },
 ];
