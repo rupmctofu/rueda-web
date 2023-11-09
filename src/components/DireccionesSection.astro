@@ -26,7 +26,7 @@ import CardDo from "@/components/CardDo.astro";
           />
 
           <section
-            id="sur"
+            id={"#" + title}
             class={`min-h-screen flex flex-col items-center bg-[url('${background}')] bg-no-repeat bg-cover p-20`}
           >
             <header class="flex flex-col items-center text-center">
@@ -34,7 +34,7 @@ import CardDo from "@/components/CardDo.astro";
                 {pretitle}
               </span>
 
-              <h2 class="font-title text-slate-50 text-[140px] leading-none">
+              <h2 class="font-title text-slate-50 text-9xl leading-none">
                 {title}
               </h2>
               <h3 class="tracking-[20px] text-black/70 font-semibold text-6xl mt-5">

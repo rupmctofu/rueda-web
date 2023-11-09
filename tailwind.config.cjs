@@ -7,6 +7,7 @@ module.exports = {
       "oeste-image": "url('/lucia.jpg')",
       "norte-image": "url('/coca.jpg')",
       "este-image": "url('/temazcal.jpg')",
+      "maestria-image": "url('/mishas.jpg')",
     },
     fontFamily: {
       base: ["ClashDisplay", "system-ui"],

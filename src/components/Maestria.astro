@@ -1,0 +1,53 @@
+---
+import CardDo from "@/components/CardDo.astro";
+import { maestria } from "@/maestria";
+
+const { image, title, html, background, footer, doCards } = maestria;
+const bgClass = `bg-[url('${background}')]`;
+---
+
+<div class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}>
+</div>
+
+<section
+  class="min-h-screen bg-[url('/maestria-bg.svg')] flex flex-col items-center bg-no-repeat bg-cover p-20 text-teal-800"
+>
+  <header class="flex flex-col items-center text-center">
+    <h2 class="font-title text-[140px] leading-none">
+      {title}
+    </h2>
+    <p class="max-w-5xl leading-6 mt-6 text-xl" set:html={html} />
+  </header>
+
+  <span
+    class="bg-black font-semibold text-gray-50 text-md tracking-widest rounded-full px-6 py-1 z-10 mt-20"
+  >
+    ¿QUÉ HARÁS?
+  </span>
+
+  <ul
+    class="max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden w-full"
+  >
+    {
+      doCards.map(({ icon, html }) => (
+        <li class="grow basis-0 even:bg-gray-50">
+          <CardDo icon={icon}>
+            <Fragment set:html={html} />
+          </CardDo>
+        </li>
+      ))
+    }
+  </ul>
+
+  <footer class="w-full flex flex-col items-center">
+    <div class="flex items-center w-full max-w-6xl py-5 mt-20">
+      <span class="flex grow h-[2px] bg-teal-800"></span>
+      <span class="flex-shrink mx-4 text-xl font-semibold tracking-[5px]">
+        {footer.title}
+      </span>
+      <span class="flex grow h-[2px] bg-teal-800"></span>
+    </div>
+
+    <p class="leading-6 mt-6 text-xl text-center w-full max-w-6xl" set:html={footer.html} />
+  </footer>
+</section>

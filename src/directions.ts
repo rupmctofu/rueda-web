@@ -5,7 +5,7 @@ export const directions = [
     title: "SUR",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    background: "/snake-bg.svg",
+    background: "/sur-section-bg.svg",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -54,7 +54,8 @@ export const directions = [
     title: "OESTE",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
-    background: "/jaguar-bg.svg",
+    html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
+    background: "/oeste-section-bg.svg",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -96,7 +97,7 @@ export const directions = [
     subtitle: "COLIBRÍ",
     description: "La dirección del y lA maestra interna",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
-    background: "/colibri-bg.svg",
+    background: "/norte-section-bg.svg",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -145,7 +146,8 @@ export const directions = [
     title: "ESTE",
     subtitle: "ÁGUILA Y CÓNDOR",
     description: "INTEGRACIÓN",
-    background: "/condor-bg.svg",
+    html:`La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
+    background: "/este-section-bg.svg",
     footer: "INTEGRAMOS",
     doCards: [
       {
@@ -192,37 +194,5 @@ export const directions = [
         html: `Ahora, tu <strong class="font-semibold">mesa medicinal</strong> y tu <strong class="font-semibold">mesa estelar</strong> están completas`,
       },
     ],
-  },
-  {
-    image: "/mishas.jpg",
-    pretitle: "DIRECCIÓN",
-    title: "MAESTRÍA",
-    background: "/maestria-bg.svg",
-    accentBg: "#48284C",
-    accentText: "#F44A9F",
-    footer: "MUY IMPORTANTE",
-    doCards: [
-      {
-        icon: "/maestria-do-1.svg",
-        html: `<strong class="font-semibold"Iniciaciones</strong> teóricas y prácticas.`,
-      },
-      {
-        icon: "/maestria-do-2.svg",
-        html: `<strong class="font-semibold">Ciclos </strong>de la vida.`,
-      },
-      {
-        icon: "/maestria-do-3.svg",
-        html: `<strong class="font-semibold">Ritos</strong> de la edad.`,
-      },
-      {
-        icon: "/maestria-do-4.svg",
-        html: `Oficiar<strong class="font-semibold"> bodas</strong> chamánicas.`,
-      },
-      {
-        icon: "/maestria-do-5.svg",
-        html: `Oficiar<strong class="font-semibold"> bautizos</strong> chamánicos.`,
-      },
-    ],
-    footerCards: [],
   },
 ];
