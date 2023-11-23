@@ -146,7 +146,7 @@ export const directions = [
     title: "ESTE",
     subtitle: "ÁGUILA Y CÓNDOR",
     description: "INTEGRACIÓN",
-    html:`La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
+    html: `La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
     background: "/este-section-bg.svg",
     footer: "INTEGRAMOS",
     doCards: [

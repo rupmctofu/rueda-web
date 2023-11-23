@@ -1,3 +1,7 @@
+---
+import { facilitadores } from "@/lib/facilitadores";
+---
+
 <div
   class="wfull flex aspect-[10/4] bg-[url('montserrat.jpg')] bg-fixed bg-no-repeat bg-cover"
 >
@@ -5,26 +9,60 @@
 
 <section
   id="#facilitadores"
-  class="flex flex-col gap-24 items-center bg-[url('/facilitadores-bg.jpg')] bg-no-repeat bg-cover py-20"
+  class="flex flex-col items-center bg-[url('/facilitadores-bg.jpg')] bg-no-repeat bg-cover py-24"
 >
   <h2 class="font-title text-slate-50 text-8xl leading-none">Facilitadores</h2>
 
-  <ul class="w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-14 hide-scrollbar">
+  <ul
+    id="facilitadoresSlider"
+    class="w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6 hide-scrollbar"
+  >
     <span class="shrink-0 w-1/2"></span>
-    
-    <li class="snap-center shrink-0 h-96 aspect-[6/3]">
-      <img class="shrink-0 w-full h-full rounded-lg shadow-xl bg-white" src="/lucia.png">
-    </li>
-    <li class="snap-center shrink-0 h-96 aspect-[6/3]">
-      <img class="shrink-0 w-full h-full rounded-lg shadow-xl bg-white" src="/lidia.png">
-    </li>
-    <li class="snap-center shrink-0 h-96 aspect-[6/3]">
-      <img class="shrink-0 w-full h-full rounded-lg shadow-xl bg-white" src="/lucia.png">
-    </li>
-    <li class="snap-center shrink-0 h-96 aspect-[6/3]">
-      <img class="shrink-0 w-full h-full rounded-lg shadow-xl bg-white" src="/lidia.png">
-    </li>
 
-      <span class="shrink-0 w-1/2"></span>
-    </ul>
+    {
+      facilitadores.map(({ image, name, text }) => (
+        <li class="relative snap-center shrink-0 h-[550px] aspect-[6/3.5] flex items-end">
+          <img class="absolute inset-0 h-full rounded-xl" src={image} />
+
+          <article class="w-full h-3/4 rounded-xl shadow-xl bg-white flex flex-col items-end justify-center gap-1 pl-24 pr-8">
+            <h3 class="w-2/3 font-bold text-5xl">{name}</h3>
+            <p class="w-2/3 text-lg">{text}</p>
+          </article>
+        </li>
+      ))
+    }
+
+    <span class="shrink-0 w-1/2"></span>
+  </ul>
+
+  <nav class="flex gap-2">
+    <button
+      id="prevButton"
+      class="bg-sur text-white font-bold px-8 py-4 rounded-lg">ANTERIOR</button
+    >
+    <button
+      id="nextButton"
+      class="bg-sur text-white font-bold px-8 py-4 rounded-lg">SIGUIENTE</button
+    >
+  </nav>
 </section>
+
+<script>
+  const prevButton = document.querySelector("#prevButton");
+  const nextButton = document.querySelector("#nextButton");
+  const facilitadoresSlider = document.querySelector("#facilitadoresSlider");
+
+  nextButton.addEventListener("click", () => {
+    facilitadoresSlider.scrollBy({
+      left: 200,
+      behavior: "smooth",
+    });
+  });
+
+  prevButton.addEventListener("click", () => {
+    facilitadoresSlider.scrollBy({
+      left: -200,
+      behavior: "smooth",
+    });
+  });
+</script>
