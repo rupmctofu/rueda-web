@@ -2,18 +2,22 @@
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    backgroundImage: {
-      "sur-image": "url('/fuego.jpg')",
-      "oeste-image": "url('/lucia.jpg')",
-      "norte-image": "url('/coca.jpg')",
-      "este-image": "url('/temazcal.jpg')",
-      "maestria-image": "url('/mishas.jpg')",
-    },
     fontFamily: {
       base: ["ClashDisplay", "system-ui"],
       title: ["Jawbreak", "system-ui"],
     },
     extend: {
+      backgroundImage: {
+        "sur-image": "url('/fuego.jpg')",
+        "sur": "url('/sur-section-bg.svg')",
+        "oeste-image": "url('/lucia.jpg')",
+        "oeste": "url('/oeste-section-bg.svg')",
+        "norte-image": "url('/coca.jpg')",
+        "norte": "url('/norte-section-bg.svg')",
+        "este-image": "url('/temazcal.jpg')",
+        "este": "url('/este-section-bg.svg')",
+        "maestria-image": "url('/mishas.jpg')",
+      },
       colors: {
         sur: "#ea4b8b",
         "sur-dark": "#542626",

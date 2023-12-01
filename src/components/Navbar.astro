@@ -1,20 +1,56 @@
 <header class="fixed flex justify-center w-full top-0 z-20">
-  <nav class="flex justify-between items-center max-w-6xl w-full text-gray-50 p-4">
-    <span class="font-title leading-4 text-lg">
-      FORMACIÓN
-      <br />
-       CHAMÁNICA
-      <br />
-       Y MAESTRÍA
+  <span class="absolute -translate-y-1/2 w-[200%] h-72 bg-teal-950/70 blur-3xl flex pointer-events-none"></span>
+
+  <nav
+    class="flex justify-between items-center max-w-6xl w-full text-gray-50 p-4 z-10"
+  >
+
+    <span class="font-title leading-5 text-2xl">
+      <a href="#la-rueda">
+        FORMACIÓN
+        <br />
+         CHAMÁNICA
+        <br />
+         Y MAESTRÍA
+      </a>
     </span>
 
-    <ul class="flex gap-10 text-xl">
-      <li>La Rueda</li>
-      <li>Direcciones</li>
-      <li>Maestría</li>
-      <li>Facilitadores</li>
-      <li>El lugar</li>
-      <li>Contacto</li>
+    <ul class="hidden lg:flex gap-10 text-xl">
+      <li>
+        <a href="#la-rueda">La Rueda</a>
+      </li>
+      <li class="relative group">
+        <a href="#direcciones">Direcciones</a>
+
+        <ul
+          class="absolute top-8 bg-teal-950/30 backdrop-blur w-32 border-l flex flex-col opacity-0 group-hover:opacity-100 group-hover:top-12 transition-all"
+        >
+          <li class="px-4 py-2">
+            <a href="#sur">Sur</a>
+          </li>
+          <li class="px-4 py-2 ">
+            <a href="#oeste">Oeste</a>
+          </li>
+          <li class="px-4 py-2 ">
+            <a href="#norte">Norte</a>
+          </li>
+          <li class="px-4 py-2 ">
+            <a href="#este">Este</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#maestria">Maestría</a>
+      </li>
+      <li>
+        <a href="#facilitadores">Facilitadores</a>
+      </li>
+      <li>
+        <a href="#espai-la-kalma">El lugar</a>
+      </li>
+      <li>
+        <a href="#contacto">Contacto</a>
+      </li>
     </ul>
   </nav>
 </header>

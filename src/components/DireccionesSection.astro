@@ -19,17 +19,15 @@ import CardDo from "@/components/CardDo.astro";
         footerCards,
       } = direction;
 
-      const classBg = `bg-[url('${background}')]`;
-
       return (
         <>
           <div
-            class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}
+            class:list={["wfull flex aspect-[10/3] bg-fixed bg-no-repeat bg-cover", image]}
           />
 
           <section
-            id={"#" + title}
-            class={`min-h-screen flex flex-col items-center ${classBg} bg-no-repeat bg-cover p-20`}
+            id={title}
+            class:list={["min-h-screen flex flex-col items-center bg-no-repeat bg-cover p-20", background]}
           >
             <header class="flex flex-col items-center text-center">
               <span class="bg-black font-semibold text-gray-50 text-md tracking-widest rounded-full px-6 py-1 -mb-4">

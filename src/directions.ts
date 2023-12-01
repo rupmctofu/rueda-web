@@ -2,10 +2,10 @@ export const directions = [
   {
     image: "bg-sur-image",
     pretitle: "PRIMERA DIRECCIÓ",
-    title: "SUR",
+    title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    background: "/sur-section-bg.svg",
+    background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -51,11 +51,11 @@ export const directions = [
   {
     image: "bg-oeste-image",
     pretitle: "SEGUNDA DIRECCIÓ",
-    title: "OESTE",
+    title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
     html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
-    background: "/oeste-section-bg.svg",
+    background: "bg-oeste",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -93,11 +93,11 @@ export const directions = [
   {
     image: "bg-norte-image",
     pretitle: "TERCERA DIRECCIÓ",
-    title: "NORTE",
+    title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y lA maestra interna",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
-    background: "/norte-section-bg.svg",
+    background: "bg-norte",
     footer: "CONSEGUIRÁS",
     doCards: [
       {
@@ -143,11 +143,11 @@ export const directions = [
   {
     image: "bg-este-image",
     pretitle: "CUARTA DIRECCIÓN",
-    title: "ESTE",
+    title: "este",
     subtitle: "ÁGUILA Y CÓNDOR",
     description: "INTEGRACIÓN",
     html: `La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
-    background: "/este-section-bg.svg",
+    background: "bg-este",
     footer: "INTEGRAMOS",
     doCards: [
       {
