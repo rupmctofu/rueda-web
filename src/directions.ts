@@ -149,7 +149,7 @@ export const directions = [
     html: `La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
     background: "bg-este",
     footer: "INTEGRAMOS",
-    doCards: [
+    doCards: [ 
       {
         icon: "/este-do-1.svg",
         html: `Aprender <strong class="font-semibold">alquimia Indígena</strong> y liberación de proyecciones.`,

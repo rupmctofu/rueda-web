@@ -9,13 +9,13 @@ module.exports = {
     extend: {
       backgroundImage: {
         "sur-image": "url('/fuego.jpg')",
-        "sur": "url('/sur-section-bg.svg')",
+        sur: "url('/sur-section-bg.svg')",
         "oeste-image": "url('/lucia.jpg')",
-        "oeste": "url('/oeste-section-bg.svg')",
+        oeste: "url('/oeste-section-bg.svg')",
         "norte-image": "url('/coca.jpg')",
-        "norte": "url('/norte-section-bg.svg')",
+        norte: "url('/norte-section-bg.svg')",
         "este-image": "url('/temazcal.jpg')",
-        "este": "url('/este-section-bg.svg')",
+        este: "url('/este-section-bg.svg')",
         "maestria-image": "url('/mishas.jpg')",
       },
       colors: {
