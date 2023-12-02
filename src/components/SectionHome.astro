@@ -1,0 +1,36 @@
+---
+import Feathers from "@/components/Feathers.astro";
+import HomeSlider from "./HomeSlider.astro";
+---
+
+<section
+  id="la-rueda"
+  class="relative bg-[url('/landing-bg.jpg')] bg-cover flex flex-col gap-4 items-center text-gray-50"
+>
+  <header class="flex flex-col items-center gap-4 py-28">
+    <span class="mt-32 font-semibold text-2xl tracking-widest">
+      LIDIA HIDALGO
+    </span>
+
+    <h1
+      class="font-title text-6xl lg:text-9xl leading-[50px] lg:leading-[100px]"
+    >
+      FORMACIÓN
+      <br />
+       CHAMÁNICA
+      <br />
+       Y MAESTRÍA
+    </h1>
+
+    <a
+      href="#contacto"
+      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-12 py-2 font-semibold mt-20 hover:bg-gray-50 hover:text-gray-400 transition"
+    >
+      RESERVAR
+    </a>
+
+    <Feathers />
+  </header>
+
+  <HomeSlider />
+</section>

@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import snake from "@/assets/directions/snake.png";
+import jaguar from "@/assets/directions/jaguar.png";
+import colibri from "@/assets/directions/colibri.png";
+import condor from "@/assets/directions/condor.png";
+
+interface Props {
+  background: string;
+  image: string;
+  title: string;
+  label: string;
+  text: string;
+  footer: string;
+}
+
+const { background, image, title, label, text, footer } = Astro.props;
+const imgs = { snake, jaguar, colibri, condor };
+---
+
+<a
+  href={`#${title}`}
+  class:list={[
+    "flex flex-col text-center text-slate-50 rounded-md bg-no-repeat bg-cover",
+    background,
+  ]}
+>
+  <header class="flex flex-col gap-2 p-6 pb-0">
+    <picture class="w-[250px]">
+      <Image src={imgs[image]} alt={title} />
+    </picture>
+
+    <h3 class="text-6xl font-title">{title}</h3>
+  </header>
+
+  <main class="flex flex-col items-center px-6">
+    <span
+      class="font-bold tracking-wider text-[#392B4F] rounded-full mt-3 bg-slate-50 px-4"
+    >
+      {label}
+    </span>
+
+    <p class="font-title text-xl leading-[20px] mt-3" set:html={text} />
+  </main>
+
+  <footer class="flex justify-center w-full px-6 mt-auto">
+    <span
+      class="text-sm font-semibold tracking-wider text-slate-50 bg-[#392B4F] rounded-t-full pt-2 pb-1 w-full"
+    >
+      {footer}
+    </span>
+  </footer>
+</a>

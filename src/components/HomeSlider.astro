@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import Ornament from "@/icons/Ornament.astro";
+import ruedaChamanica from "@/assets/home-slider/rueda-chamanica.jpg";
+---
+
+<article class="relative flex flex-wrap bg-orange-500 max-w-5xl w-full mb-48">
+  <picture class="absolute hidden lg:block w-full top-2">
+    <Ornament />
+  </picture>
+
+  <div class="flex flex-col w-full lg:w-[55%] justify-center gap-4 p-12">
+    <h2 class="font-title text-4xl lg:text-5xl">
+      ¿Qué es una
+      <br />
+       Rueda Chamánica?
+    </h2>
+
+    <p class="text-lg lg:text-xl">
+      <strong class="font-semi"
+        >La Rueda Chamánica de las Cuatro Direcciones</strong
+      > es un programa que implica el descubrimiento de cuatro animales de poder
+      y la exploración de <strong class="font-semi"
+        >cuatro direcciones a través de retiros</strong
+      >, culminando en una etapa de maestría.
+    </p>
+  </div>
+
+  <picture class="w-full lg:w-[45%] ml-auto">
+    <Image src={ruedaChamanica} alt="Rueda Chamánica" />
+  </picture>
+
+  <picture class="absolute hidden lg:block w-full bottom-2 rotate-180">
+    <Ornament />
+  </picture>
+</article>

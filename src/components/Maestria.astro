@@ -1,9 +1,8 @@
 ---
 import CardDo from "@/components/CardDo.astro";
-import { maestria } from "@/maestria";
+import { maestria } from "@/lib/maestria";
 
 const { image, title, html, background, footer, doCards } = maestria;
-const bgClass = `bg-[url('${background}')]`;
 ---
 
 <div class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}>

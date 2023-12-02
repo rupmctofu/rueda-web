@@ -1,52 +1,91 @@
-<picture class="absolute max-w-4xl w-full pointer-events-none">
-  <img class="absolute w-full feathers f1" src="/f1.svg" alt="Feathers" />
-  <img class="absolute w-full feathers f2" src="/f2.svg" alt="Feathers" />
-  <img class="absolute w-full feathers f3" src="/f3.svg" alt="Feathers" />
-  <img class="absolute w-full feathers f5" src="/f5.svg" alt="Feathers" />
-  <img class="absolute w-full feathers f6" src="/f6.svg" alt="Feathers" />
+---
+import { Image } from "astro:assets";
+import f1 from "@/assets/feathers/1.svg";
+import f2 from "@/assets/feathers/2.svg";
+import f3 from "@/assets/feathers/3.svg";
+import f4 from "@/assets/feathers/4.svg";
+import f5 from "@/assets/feathers/5.svg";
+---
+
+<picture class="absolute max-w-4xl w-full pointer-events-none select-none">
+  <Image src={f1} alt="Feather" class="absolute w-full" />
+  <Image src={f2} alt="Feather" class="absolute w-full" />
+  <Image src={f3} alt="Feather" class="absolute w-full" />
+  <Image src={f4} alt="Feather" class="absolute w-full" />
+  <Image src={f5} alt="Feather" class="absolute w-full" />
 </picture>
 
 <style>
-  .feathers {
+  img {
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-name: side;
     transform: translateX(-100px) rotate(20deg);
   }
 
-  .f1 {
+  img:nth-child(1) {
     left: -50%;
     animation-delay: 0ms;
     animation-duration: 22s;
     opacity: 0.5;
   }
-  .f2 {
+
+  img:nth-child(2) {
     top: -50%;
     left: -20%;
     animation-delay: 500ms;
     animation-duration: 24s;
     opacity: 0.7;
   }
-  .f3 {
+
+  img:nth-child(3) {
     top: -70%;
     left: -50%;
     animation-delay: 250ms;
     animation-duration: 20s;
     opacity: 0.5;
   }
-  .f5 {
-    top: -300px;
+
+  img:nth-child(4) {
+    top: -10vh;
     left: 40%;
     animation-delay: 750ms;
     animation-duration: 22s;
     opacity: 0.5;
   }
-  .f6 {
+
+  img:nth-child(5) {
     top: -10%;
     left: 40%;
     animation-delay: 250ms;
     animation-duration: 20s;
     opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    img:nth-child(1) {
+      left: 10%;
+    }
+
+    img:nth-child(2) {
+      top: 20vh;
+      left: 10%;
+    }
+
+    img:nth-child(3) {
+      top: 20vh;
+      left: 10%;
+    }
+
+    img:nth-child(4) {
+      top: -10vh;
+      left: -20%;
+    }
+
+    img:nth-child(5) {
+      top: 10vh;
+      left: -20%;
+    }
   }
 
   @keyframes side {

@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import espai1 from "@/assets/espai-kalma/espai-la-kalma-1.jpg";
+import espai2 from "@/assets/espai-kalma/espai-la-kalma-2.jpg";
+import espai3 from "@/assets/espai-kalma/espai-la-kalma-3.jpg";
+import espai4 from "@/assets/espai-kalma/espai-la-kalma-4.jpg";
+---
+
+<section
+  id="espai-la-kalma"
+  class="flex flex-col gap-2 items-center bg-white bg-[url('/faci-bg.png')] pt-24"
+>
+  <span
+    class="font-semibold text-black text-lg tracking-widest rounded-full px-6 py-1 -mb-4"
+    >TRANQUILIDAD Y NATURALEZA</span
+  >
+  <h2
+    class="font-title text-orange-500 text-7xl lg:text-8xl leading-none text-center"
+  >
+    Espai la Kalma
+  </h2>
+
+  <p class="max-w-4xl text-lg text-center mt-12 px-8">
+    Casa de retiros, para 14 personas, piscina privada salina. Espa i la Kalma,
+    nace entre viñas y cultivos, muy cerca del río Gaià, un río aparentemente
+    tranquilo, cuando se e nfada baja con fuerza, sus aguas llenas de vida y
+    amor. A lo lejos observamos el santuario de Montserrat, un sa ntuario muy
+    especial que nace entre montaña y viñas, Jujol (discípulo de Gaudí), hombre
+    de mucha fe, eli gió esa ubicación, pues según él, es un camino de fe y un
+    enclave muy energético y especial.
+  </p>
+
+  <div class="flex w-full mt-24">
+    <Image src={espai1} alt="Espai la Kalma" class="w-full lg:w-1/4" />
+    <Image
+      src={espai2}
+      alt="Espai la Kalma"
+      class="hidden lg:block w-full lg:w-1/4"
+    />
+    <Image
+      src={espai3}
+      alt="Espai la Kalma"
+      class="hidden lg:block w-full lg:w-1/4"
+    />
+    <Image
+      src={espai4}
+      alt="Espai la Kalma"
+      class="hidden lg:block w-full lg:w-1/4"
+    />
+  </div>
+</section>

@@ -1,12 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
-import Home from "@/components/Home.astro";
-import DireccionesRow from "@/components/DireccionesRow.astro";
+import SectionHome from "@/components/SectionHome.astro";
+import SectionDirections from "@/components/SectionDirections.astro";
 import DireccionesSection from "@/components/DireccionesSection.astro";
 import Maestria from "@/components/Maestria.astro";
 import Facilitadores from "@/components/Facilitadores.astro";
-import EspaiKalma from "@/components/EspaiKalma.astro";
+import SectionEspai from "@/components/SectionEspai.astro";
 import Contact from "@/components/Contact.astro";
 ---
 
@@ -14,12 +14,12 @@ import Contact from "@/components/Contact.astro";
   <Navbar />
 
   <main class="flex flex-col w-full">
-    <Home />
-    <DireccionesRow />
+    <SectionHome />
+    <SectionDirections />
     <DireccionesSection />
     <Maestria />
     <Facilitadores />
-    <EspaiKalma />
+    <SectionEspai />
     <Contact />
   </main>
 </Layout>
