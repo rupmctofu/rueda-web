@@ -1,0 +1,90 @@
+---
+import { facilitadores } from "@/lib/facilitadores";
+import { Image } from "astro:assets";
+import left from "@/assets/facilitadores/left.png";
+import right from "@/assets/facilitadores/right.png";
+---
+
+<div
+  class="wfull flex aspect-[4/2] lg:aspect-[10/4] bg-[url('/facilitadores/montserrat.jpg')] bg-fixed bg-no-repeat bg-cover bg-center"
+>
+</div>
+
+<section
+  id="facilitadores"
+  class="flex flex-col items-center bg-[url('/facilitadores/bg.jpg')] bg-no-repeat bg-cover py-24"
+>
+  <h2 class="font-title text-slate-50 text-5xl lg:text-8xl leading-none">
+    Facilitadores
+  </h2>
+
+  <ul
+    id="facilitadoresSlider"
+    class="w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6 hide-scrollbar"
+  >
+    <span class="shrink-0 w-4 lg:w-1/2"></span>
+
+    {
+      facilitadores.map(({ image, name, text }) => (
+        <li class="relative snap-center shrink-0 w-[calc(100%_-_4rem)] lg:w-auto h-auto lg:h-[550px] aspect-auto lg:aspect-[6/3.5] flex items-end">
+          <article class="relative w-full h-3/4 rounded-xl shadow-xl bg-white bg-[url('/facilitadores/card-bg.png')] flex flex-col lg:flex-row items-end gap-2 pr-8">
+            <img
+              class="h-[400px] lg:h-[130%] rounded-xl -mt-20 lg:mt-0 z-20 mr-auto"
+              src={image}
+            />
+
+            <main class="flex flex-col pl-8 lg:pl-0 mt-4 lg:mt-0 mb-72 lg:mb-8">
+              <h3 class="w-full font-bold text-3xl lg:text-5xl">{name}</h3>
+              <p class="w-full text-md ld:text-lg leading-1">{text}</p>
+            </main>
+
+            <span class="absolute top-[400px] lg:top-auto -translate-y-full lg:translate-y-0 lg:bottom-0 left-0 z-20 pointer-events-none rounded-bl-xl overflow-hidden -mt-20 lg:mt-0">
+              <Image src={left} alt="Ornamentación inca" width="250" />
+            </span>
+
+            <span class="absolute top-0 right-0 z-10 pointer-events-none rounded-tr-xl overflow-hidden">
+              <Image src={right} alt="Ornamentación inca" width="200" />
+            </span>
+          </article>
+        </li>
+      ))
+    }
+
+    <span class="shrink-0 w-4 lg:w-1/2"></span>
+  </ul>
+
+  <nav class="flex gap-2 text-white px-8">
+    <button
+      id="prevButton"
+      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
+    >
+      ANTERIOR
+    </button>
+    <button
+      id="nextButton"
+      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
+    >
+      SIGUIENTE
+    </button>
+  </nav>
+</section>
+
+<script>
+  const prevButton = document.querySelector("#prevButton");
+  const nextButton = document.querySelector("#nextButton");
+  const facilitadoresSlider = document.querySelector("#facilitadoresSlider");
+
+  nextButton.addEventListener("click", () => {
+    facilitadoresSlider.scrollBy({
+      left: 100,
+      behavior: "smooth",
+    });
+  });
+
+  prevButton.addEventListener("click", () => {
+    facilitadoresSlider.scrollBy({
+      left: -100,
+      behavior: "smooth",
+    });
+  });
+</script>

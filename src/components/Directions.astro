@@ -23,7 +23,7 @@ import CardDo from "@/components/CardDo.astro";
         <>
           <div
             class:list={[
-              "wfull flex aspect-[10/3] bg-fixed bg-no-repeat bg-cover",
+              "wfull flex aspect-[4/2] lg:aspect-[10/3] bg-fixed bg-no-repeat bg-cover bg-center",
               image,
             ]}
           />
@@ -31,7 +31,7 @@ import CardDo from "@/components/CardDo.astro";
           <section
             id={title}
             class:list={[
-              "min-h-screen flex flex-col items-center bg-no-repeat bg-cover p-20",
+              "min-h-screen flex flex-col items-center bg-no-repeat bg-cover py-20 px-8",
               background,
             ]}
           >
@@ -40,10 +40,10 @@ import CardDo from "@/components/CardDo.astro";
                 {pretitle}
               </span>
 
-              <h2 class="font-title text-slate-50 text-9xl leading-none">
+              <h2 class="font-title text-slate-50 text-7xl lg:text-9xl leading-none -ml-3 mt-4 lg:mt-0">
                 {title}
               </h2>
-              <h3 class="tracking-[20px] text-black/70 font-semibold text-6xl mt-5">
+              <h3 class="tracking-[10px] lg:tracking-[20px] text-black/70 font-semibold text-4xl lg:text-6xl mt-5">
                 {subtitle}
               </h3>
               <p class="text-2xl font-title text-teal-50">{description}</p>
@@ -59,9 +59,9 @@ import CardDo from "@/components/CardDo.astro";
               ¿QUÉ HARÁS?
             </span>
 
-            <ul class="max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden w-full">
+            <ul class="max-w-6xl -mt-4 flex flex-wrap bg-white rounded-2xl overflow-hidden w-full">
               {doCards.map(({ icon, html }) => (
-                <li class="grow basis-0 even:bg-gray-50">
+                <li class="grow basis-0 min-w-[200px] even:bg-gray-50">
                   <CardDo icon={icon}>
                     <Fragment set:html={html} />
                   </CardDo>
@@ -77,11 +77,11 @@ import CardDo from "@/components/CardDo.astro";
               <span class={`flex grow h-[2px] bg-black`} />
             </div>
 
-            <ul class="flex flex-row flex-wrap w-full max-w-6xl mt-6 text-slate-50">
+            <ul class="flex flex-wrap w-full max-w-6xl mt-6 text-slate-50">
               {footerCards.map(({ icon, html }) => (
-                <li class="flex flex-row items-start w-1/2 gap-6 p-6">
+                <li class="flex flex-col lg:flex-row items-center lg:items-start w-full lg:w-1/2 gap-6 p-6">
                   <img src={icon} class="w-24 aspect-square" alt="Icon" />
-                  <p class="text-xl">
+                  <p class="text-xl text-center lg:text-left">
                     <Fragment set:html={html} />
                   </p>
                 </li>

@@ -5,18 +5,20 @@ import { maestria } from "@/lib/maestria";
 const { image, title, html, background, footer, doCards } = maestria;
 ---
 
-<div class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}>
+<div
+  class={`wfull flex aspect-[4/2] lg:aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover bg-center`}
+>
 </div>
 
 <section
   id="maestria"
   class:list={[
-    "min-h-screen flex flex-col items-center bg-no-repeat bg-cover p-20 text-teal-800",
+    "min-h-screen flex flex-col items-center bg-no-repeat bg-cover py-20 px-8 text-teal-800",
     background,
   ]}
 >
   <header class="flex flex-col items-center text-center">
-    <h2 class="font-title text-[140px] leading-none">
+    <h2 class="font-title text-7xl lg:text-9xl leading-none">
       {title}
     </h2>
     <p class="max-w-5xl leading-6 mt-6 text-xl" set:html={html} />
@@ -29,11 +31,11 @@ const { image, title, html, background, footer, doCards } = maestria;
   </span>
 
   <ul
-    class="max-w-6xl -mt-4 flex flex-row bg-white rounded-2xl overflow-hidden w-full"
+    class="max-w-6xl -mt-4 flex flex-wrap bg-white rounded-2xl overflow-hidden w-full"
   >
     {
       doCards.map(({ icon, html }) => (
-        <li class="grow basis-0 even:bg-gray-50">
+        <li class="grow basis-0 min-w-[200px] even:bg-gray-50">
           <CardDo icon={icon}>
             <Fragment set:html={html} />
           </CardDo>
