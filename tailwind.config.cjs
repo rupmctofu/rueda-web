@@ -10,10 +10,11 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        sur: "url('/sur/sur-bg.svg')",
-        oeste: "url('/oeste/oeste-bg.svg')",
-        norte: "url('/norte/norte-bg.svg')",
-        este: "url('/este/este-bg.svg')",
+        sur: "url('/sur/bg.svg')",
+        oeste: "url('/oeste/bg.svg')",
+        norte: "url('/norte/bg.svg')",
+        este: "url('/este/bg.svg')",
+        maestria: "url('/maestria/bg.svg')",
         "sur-image": "url('/sur/fuego.jpg')",
         "oeste-image": "url('/oeste/lucia.jpg')",
         "norte-image": "url('/norte/coca.jpg')",

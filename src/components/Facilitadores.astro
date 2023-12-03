@@ -1,15 +1,18 @@
 ---
 import { facilitadores } from "@/lib/facilitadores";
+import { Image } from "astro:assets";
+import left from "@/assets/facilitadores/left.png";
+import right from "@/assets/facilitadores/right.png";
 ---
 
 <div
-  class="wfull flex aspect-[10/4] bg-[url('facilitadores/montserrat.jpg')] bg-fixed bg-no-repeat bg-cover"
+  class="wfull flex aspect-[10/4] bg-[url('/facilitadores/montserrat.jpg')] bg-fixed bg-no-repeat bg-cover"
 >
 </div>
 
 <section
   id="facilitadores"
-  class="flex flex-col items-center bg-[url('/facilitadores/facilitadores-bg.jpg')] bg-no-repeat bg-cover py-24"
+  class="flex flex-col items-center bg-[url('/facilitadores/bg.jpg')] bg-no-repeat bg-cover py-24"
 >
   <h2 class="font-title text-slate-50 text-8xl leading-none">Facilitadores</h2>
 
@@ -24,24 +27,16 @@ import { facilitadores } from "@/lib/facilitadores";
         <li class="relative snap-center shrink-0 h-[550px] aspect-[6/3.5] flex items-end">
           <img class="absolute inset-0 h-full rounded-xl z-10" src={image} />
 
-          <article class="relative w-full h-3/4 rounded-xl shadow-xl bg-white bg-[url('/faci-bg.png')] flex flex-col items-end justify-center gap-1 pl-24 pr-8 overflow-hidden">
+          <article class="relative w-full h-3/4 rounded-xl shadow-xl bg-white bg-[url('/facilitadores/card-bg.png')] flex flex-col items-end justify-center gap-1 pl-24 pr-8 overflow-hidden">
             <h3 class="w-2/3 font-bold text-5xl">{name}</h3>
             <p class="w-2/3 text-lg">{text}</p>
 
             <span class="absolute bottom-0 left-0 z-20 pointer-events-none">
-              <img
-                src="/facilitadores/faci-left.png"
-                alt="Ornamentación inca"
-                width="250"
-              />
+              <Image src={left} alt="Ornamentación inca" width="250" />
             </span>
 
             <span class="absolute top-0 right-0 z-20 pointer-events-none">
-              <img
-                src="/facilitadores/faci-right.png"
-                alt="Ornamentación inca"
-                width="200"
-              />
+              <Image src={right} alt="Ornamentación inca" width="200" />
             </span>
           </article>
         </li>

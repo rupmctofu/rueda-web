@@ -10,18 +10,18 @@ interface Props {
   image: string;
   title: string;
   label: string;
-  text: string;
+  html: string;
   footer: string;
 }
 
-const { background, image, title, label, text, footer } = Astro.props;
+const { background, image, title, label, html, footer } = Astro.props;
 const imgs = { snake, jaguar, colibri, condor };
 ---
 
 <a
   href={`#${title}`}
   class:list={[
-    "flex flex-col text-center text-slate-50 rounded-md bg-no-repeat bg-cover",
+    "flex flex-col text-center text-slate-50 rounded-md bg-no-repeat bg-covers",
     background,
   ]}
 >
@@ -40,7 +40,7 @@ const imgs = { snake, jaguar, colibri, condor };
       {label}
     </span>
 
-    <p class="font-title text-xl leading-[20px] mt-3" set:html={text} />
+    <p class="font-title text-xl leading-[20px] mt-3" set:html={html} />
   </main>
 
   <footer class="flex justify-center w-full px-6 mt-auto">

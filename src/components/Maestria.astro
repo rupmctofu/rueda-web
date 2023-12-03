@@ -8,8 +8,12 @@ const { image, title, html, background, footer, doCards } = maestria;
 <div class={`wfull flex aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover`}>
 </div>
 
-<section id="maestria"
-  class="min-h-screen bg-[url('/maestria-bg.svg')] flex flex-col items-center bg-no-repeat bg-cover p-20 text-teal-800"
+<section
+  id="maestria"
+  class:list={[
+    "min-h-screen flex flex-col items-center bg-no-repeat bg-cover p-20 text-teal-800",
+    background,
+  ]}
 >
   <header class="flex flex-col items-center text-center">
     <h2 class="font-title text-[140px] leading-none">
@@ -47,6 +51,9 @@ const { image, title, html, background, footer, doCards } = maestria;
       <span class="flex grow h-[2px] bg-teal-800"></span>
     </div>
 
-    <p class="leading-6 mt-6 text-xl text-center w-full max-w-6xl" set:html={footer.html} />
+    <p
+      class="leading-6 mt-6 text-xl text-center w-full max-w-6xl"
+      set:html={footer.html}
+    />
   </footer>
 </section>
