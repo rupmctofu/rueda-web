@@ -1,7 +1,7 @@
 export const directions = [
   {
     image: "bg-sur-image",
-    pretitle: "PRIMERA DIRECCIÓ",
+    pretitle: "PRIMERA DIRECCIÓN",
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
@@ -50,7 +50,7 @@ export const directions = [
   },
   {
     image: "bg-oeste-image",
-    pretitle: "SEGUNDA DIRECCIÓ",
+    pretitle: "SEGUNDA DIRECCIÓN",
     title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
@@ -92,7 +92,7 @@ export const directions = [
   },
   {
     image: "bg-norte-image",
-    pretitle: "TERCERA DIRECCIÓ",
+    pretitle: "TERCERA DIRECCIÓN",
     title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y lA maestra interna",
