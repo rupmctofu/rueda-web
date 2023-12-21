@@ -10,7 +10,7 @@ export const facilitadores = [
     text: `Soy un buscador en constante autoconocimiento, dedicado al servicio a través de mi formación en Estética, Osteopatía, y Psicología. Mi viaje incluye estudios profundos sobre el ser, abarcando terapias como la sistémica con muñecos, sanación del útero, Chamanismo, Reiki Usui, desprogramación genética, y terapias energéticas. Actualmente, me formo en terapias Esenias y Egipcias en Madrid, y curso un Máster en psicología infantil y juvenil.`,
   },
   {
-    image: "/facilitadores/lidia.png",
+    image: "/facilitadores/pedro.png",
     name: "Pedro González",
     text: `Estudiante de astrología y apasionado de la montaña, practico yoga y llevo una vida de servicio como duende verde. En mi búsqueda de sanación, descubrí el temazcal de Lidia y otros, iniciando la rueda medicinal y comprometiéndome con la búsqueda de visión. Aunque no siempre fácil, cada experiencia fue mágica y transformadora. Aprendí sobre mis emociones, sané heridas, lloré, reí, abracé y amé. Espero que esta vivencia os llegue tan sanadora como me llegó a mí.`,
   },
