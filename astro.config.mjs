@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import netlify from "@astrojs/netlify/functions";
 
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   integrations: [tailwind()],
   adapter: netlify(),
 });
