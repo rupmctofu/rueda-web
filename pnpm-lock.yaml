@@ -14,6 +14,9 @@ dependencies:
   astro:
     specifier: ^3.2.3
     version: 3.6.4
+  emailjs:
+    specifier: ^4.0.3
+    version: 4.0.3
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.5
@@ -1623,6 +1626,16 @@ packages:
 
   /electron-to-chromium@1.4.601:
     resolution: {integrity: sha512-SpwUMDWe9tQu8JX5QCO1+p/hChAi9AE9UpoC3rcHVc+gdCGlbT3SGb5I1klgb952HRIyvt9wZhSz9bNBYz9swA==}
+    dev: false
+
+  /emailjs@4.0.3:
+    resolution: {integrity: sha512-1CDXoE3FxkSg7QRTlLsDCYG9elFNu/JQsYWu3Xfrk77ubbg5zYgFGg+JRUKQJ56mceM8o3rHHX0VB4wo9XsyLQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      typescript: '>=4.3.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dev: false
 
   /emoji-regex@10.3.0:

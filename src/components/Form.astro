@@ -49,7 +49,54 @@
       type="reset"
       class="tracking-widest text-lg rounded-full p-2 font-semibolds hover:text-gray-400 transition"
     >
-      Limpiar formulario</button
-    >
+      Limpiar formulario
+    </button>
+
+    <p class="text-gray-400 md:ml-auto" id="response" hidden></p>
   </fieldset>
 </form>
+
+<script>
+  const formEl = document.querySelector("form");
+  const responseEl = document.querySelector("#response");
+  const sendEl = document.querySelector("button[type='submit']");
+
+  function showResponse(text: string, reset = false) {
+    responseEl.textContent = text;
+    responseEl.removeAttribute("hidden");
+
+    setTimeout(() => {
+      responseEl.setAttribute("hidden", null);
+      sendEl.removeAttribute("disabled");
+    }, 5000);
+
+    if (reset) formEl.reset();
+  }
+
+  formEl.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    sendEl.setAttribute("disabled", null);
+
+    const formData = new FormData(formEl);
+    const data = Object.fromEntries(formData);
+
+    responseEl.textContent = "Enviando...";
+    responseEl.removeAttribute("hidden");
+
+    const res = await fetch("/api/form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      console.log(await res.json());
+      showResponse("Ha ocurrido un error. Por favor vuelve a intentarlo.");
+      return;
+    }
+
+    showResponse("Gracias por contactar.", true);
+  });
+</script>
