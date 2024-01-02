@@ -4,7 +4,7 @@ import { intern, response } from "@/lib/email-templates";
 
 const EMAIL_USER = import.meta.env.EMAIL_USER;
 const EMAIL_PASS = import.meta.env.EMAIL_PASS;
-const EMAIL_RECIVER = import.meta.env.EMAIL_RECIVER;
+const EMAIL_REPLY = import.meta.env.EMAIL_REPLY;
 
 const client = new SMTPClient({
   user: EMAIL_USER,
@@ -16,8 +16,6 @@ const client = new SMTPClient({
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
-
-    console.log({ formData, EMAIL_USER });
 
     const internMessage = {
       from: `Espai La Kalma Web <${EMAIL_USER}>`,
@@ -33,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
     const responseMessage = {
       from: `Espai La Kalma Web <${EMAIL_USER}>`,
       to: `${formData.fullname} <${formData.email}>`,
-      "reply-to": `Espai La Kalma <${EMAIL_RECIVER}>`,
+      "reply-to": `Espai La Kalma <${EMAIL_REPLY}>`,
       subject: `${formData.fullname}, gracias por contactar con nosotros`,
       text: "Gracias por ponerte en contacto con Espai la Kalma. Apreciamos tu interés. En breves nos comunicaremos contigo.",
       attachment: {

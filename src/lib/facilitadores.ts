@@ -25,4 +25,9 @@ export const facilitadores = [
     name: "Pilar Julián Aguilar",
     text: `Artesana y Mujer medicina en la cocina.`,
   },
+  {
+    image: "/facilitadores/lidia.png",
+    name: "Pilar Julián Aguilar",
+    text: `Artesana y Mujer medicina en la cocina.`,
+  },
 ];

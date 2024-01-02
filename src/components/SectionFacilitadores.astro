@@ -22,7 +22,7 @@ import right from "@/assets/facilitadores/right.png";
     id="facilitadoresSlider"
     class="w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6 hide-scrollbar"
   >
-    <span class="shrink-0 w-4 lg:w-1/2"></span>
+    <li class="flex shrink-0 w-4 lg:w-1/2 h-auto"></li>
 
     {
       facilitadores.map(({ image, name, text }) => (
@@ -50,7 +50,7 @@ import right from "@/assets/facilitadores/right.png";
       ))
     }
 
-    <span class="shrink-0 w-4 lg:w-1/2"></span>
+    <li class="shrink-0 w-4 lg:w-1/2"></li>
   </ul>
 
   <nav class="flex gap-2 text-white px-8">

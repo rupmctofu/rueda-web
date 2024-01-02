@@ -19,7 +19,7 @@ import CardDirection from "./CardDirection.astro";
     <ul class="flex flex-wrap justify-center items-stretch gap-2">
       {
         directionCards.map((card) => (
-          <li class="flex aspect-[3/5] hover:scale-110 odd:hover:-rotate-1 even:hover:rotate-1 hover:shadow-[0_35px_60px_15px_rgba(0,0,0,0.7)] transition ease-in">
+          <li class="flex aspect-[3/5] hover:scale-110 odd:hover:-rotate-1 even:hover:rotate-1 hover:shadow-[0_35px_60px_15px_rgba(0,0,0,0.7)] transition ease-in overflow-hidden rounded-md">
             <CardDirection {...card} />
           </li>
         ))

@@ -101,20 +101,20 @@ export const response = (data: FormData) => /* html */ `
 </head>
 
 <body
-  style="text-align: center; margin: 0; padding-top: 10px; padding-bottom: 10px; padding-left: 0; padding-right: 0; -webkit-text-size-adjust: 100%;background-color: #111111; color: #ffffff"
+  style="text-align: center; margin: 0; padding-top: 20px; padding-bottom: 10px; padding-left: 0; padding-right: 0; -webkit-text-size-adjust: 100%;background-color: #ffffff; color: #000000"
   align="center">
   <div style="text-align: center;">
     <table align="center"
-      style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #000000;"
+      style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #eeeeee;"
       width="600">
       <tbody>
         <tr>
           <td
-            style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #111111;"
+            style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 30px; padding-bottom: 15px; border-bottom: 1px solid #eeeeee;"
             width="596">
             <!-- Logo -->
             <img
-                style="width: 100px; max-width: 100px; height: 100px; max-height: 100px; text-align: center; color: #ffffff;"
+                style="width: 100px; max-width: 100px; height: 100px; max-height: 100px; text-align: center; color: #000000;"
                 alt="Espai La Kalma"
                 src="https://www.espailakalmashamanic.com/mobile.png"
                 align="center"
@@ -126,7 +126,7 @@ export const response = (data: FormData) => /* html */ `
       </tbody>
     </table>
     <table align="center"
-      style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #000000;"
+      style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #eeeeee;"
       width="600">
       <tbody>
         <tr>
@@ -134,10 +134,10 @@ export const response = (data: FormData) => /* html */ `
             style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 40px;"
             width="596">
             <h1
-              style="font-size: 20px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 600; text-decoration: none; color: #ffffff;">
-              ${data.fullname}, gracias por ponerte en contacto con
+              style="font-size: 20px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 600; text-decoration: none; color: #000000;">
+              ${data.fullname},
               <br />
-              Espai la Kalma,
+              gracias por ponerte en contacto con Espai la Kalma,
             </h1>
             <p
               style="font-size: 15px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #999999;">
