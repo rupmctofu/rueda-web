@@ -1,9 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import espai1 from "@/assets/espai-kalma/espai-la-kalma-1.jpg";
-import espai2 from "@/assets/espai-kalma/espai-la-kalma-2.jpg";
-import espai3 from "@/assets/espai-kalma/espai-la-kalma-3.jpg";
-import espai4 from "@/assets/espai-kalma/espai-la-kalma-4.jpg";
 import Imago from "@/icons/Imago.astro";
 ---
 
@@ -11,7 +6,7 @@ import Imago from "@/icons/Imago.astro";
   id="espai-la-kalma"
   class="flex flex-col gap-2 items-center bg-white bg-[url('/facilitadores/card-bg.png')] pt-24"
 >
-  <Imago width="80"/>
+  <Imago width="80" />
 
   <span
     class="font-semibold text-black text-lg tracking-widest rounded-full px-6 py-1 -mb-4"
@@ -34,19 +29,23 @@ import Imago from "@/icons/Imago.astro";
   </p>
 
   <div class="flex w-full mt-24">
-    <Image src={espai1} alt="Espai la Kalma" class="w-full lg:w-1/4" />
-    <Image
-      src={espai2}
+    <img
+      src="/espai-kalma/espai-la-kalma-1.jpg"
+      alt="Espai la Kalma"
+      class="w-full lg:w-1/4"
+    />
+    <img
+      src="/espai-kalma/espai-la-kalma-2.jpg"
       alt="Espai la Kalma"
       class="hidden lg:block w-full lg:w-1/4"
     />
-    <Image
-      src={espai3}
+    <img
+      src="/espai-kalma/espai-la-kalma-3.jpg"
       alt="Espai la Kalma"
       class="hidden lg:block w-full lg:w-1/4"
     />
-    <Image
-      src={espai4}
+    <img
+      src="/espai-kalma/espai-la-kalma-4.jpg"
       alt="Espai la Kalma"
       class="hidden lg:block w-full lg:w-1/4"
     />

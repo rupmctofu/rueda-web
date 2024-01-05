@@ -1,10 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import snake from "@/assets/directions/snake.png";
-import jaguar from "@/assets/directions/jaguar.png";
-import colibri from "@/assets/directions/colibri.png";
-import condor from "@/assets/directions/condor.png";
-
 interface Props {
   background: string;
   image: string;
@@ -15,7 +9,6 @@ interface Props {
 }
 
 const { background, image, title, label, html, footer } = Astro.props;
-const imgs = { snake, jaguar, colibri, condor };
 ---
 
 <a
@@ -27,7 +20,7 @@ const imgs = { snake, jaguar, colibri, condor };
 >
   <header class="flex flex-col gap-2 p-6 pb-0">
     <picture class="w-[250px]">
-      <Image src={imgs[image]} alt={title} />
+      <img src={`/directions/${image}.png`} alt={title} />
     </picture>
 
     <h3 class="text-6xl font-title">{title}</h3>

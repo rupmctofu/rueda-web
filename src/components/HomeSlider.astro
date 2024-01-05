@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import Ornament from "@/icons/Ornament.astro";
-import ruedaChamanica from "@/assets/home-slider/rueda-chamanica.jpg";
 ---
 
 <article class="relative flex flex-wrap bg-orange-500 max-w-5xl w-full mb-48">
@@ -27,7 +25,7 @@ import ruedaChamanica from "@/assets/home-slider/rueda-chamanica.jpg";
   </div>
 
   <picture class="w-full lg:w-[45%] ml-auto">
-    <Image src={ruedaChamanica} alt="Rueda Chamánica" />
+    <img src="rueda-chamanica.jpg" alt="Rueda Chamánica" />
   </picture>
 
   <picture class="absolute hidden lg:block w-full bottom-2 rotate-180">

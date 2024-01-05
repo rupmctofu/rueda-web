@@ -1,12 +1,9 @@
 ---
 import { facilitadores } from "@/lib/facilitadores";
-import { Image } from "astro:assets";
-import left from "@/assets/facilitadores/left.png";
-import right from "@/assets/facilitadores/right.png";
 ---
 
 <div
-  class="wfull flex aspect-[4/2] lg:aspect-[10/4] bg-[url('/facilitadores/montserrat.jpg')] bg-fixed bg-no-repeat bg-cover bg-center"
+  class="wfull flex aspect-[4/2] lg:aspect-[10/4] bg-[url('/facilitadores/montserrat.jpg')] lg:bg-fixed bg-no-repeat bg-cover bg-center"
 >
 </div>
 
@@ -39,11 +36,11 @@ import right from "@/assets/facilitadores/right.png";
             </main>
 
             <span class="absolute top-[400px] lg:top-auto -translate-y-full lg:translate-y-0 lg:bottom-0 left-0 z-20 pointer-events-none rounded-bl-xl overflow-hidden -mt-20 lg:mt-0">
-              <Image src={left} alt="Ornamentación inca" width="250" />
+              <img src="/facilitadores/left.png" alt="Ornamentación inca" width="250" />
             </span>
 
             <span class="absolute top-0 right-0 z-10 pointer-events-none rounded-tr-xl overflow-hidden">
-              <Image src={right} alt="Ornamentación inca" width="200" />
+              <img src="/facilitadores/right.png" alt="Ornamentación inca" width="200" />
             </span>
           </article>
         </li>
