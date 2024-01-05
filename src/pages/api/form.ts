@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const internMessage = {
       from: `Espai La Kalma Web <${EMAIL_USER}>`,
-      to: `Espai La Kalma <${EMAIL_USER}>`,
+      to: `Espai La Kalma <${EMAIL_REPLY}>`,
       subject: `${formData.fullname} ha contactado`,
       text: "Email from website",
       attachment: {

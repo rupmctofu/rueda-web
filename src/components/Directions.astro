@@ -12,6 +12,7 @@ import CardDo from "@/components/CardDo.astro";
         title,
         subtitle,
         description,
+        date,
         html,
         background,
         footer,
@@ -23,7 +24,7 @@ import CardDo from "@/components/CardDo.astro";
         <>
           <div
             class:list={[
-              "wfull flex aspect-[4/2] lg:aspect-[10/3] bg-fixed bg-no-repeat bg-cover bg-center",
+              "wfull flex aspect-[4/2] lg:aspect-[10/3] lg:bg-fixed bg-no-repeat bg-cover bg-center",
               image,
             ]}
           />
@@ -53,6 +54,8 @@ import CardDo from "@/components/CardDo.astro";
                   set:html={html}
                 />
               )}
+
+              <time class="font-semibold text-2xl text-black/70 mt-6" datetime={date}>{date}</time>
             </header>
 
             <span class="bg-black font-semibold text-gray-50 text-md tracking-widest rounded-full px-6 py-1 z-10 mt-20">

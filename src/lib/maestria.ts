@@ -2,6 +2,7 @@ export const maestria = {
   image: "bg-maestria-image",
   title: "MAESTRÍA",
   html: `Después de las 4 direcciones, la MAESTRÍA, que es para aprender a compartir y poner en práctica todas las iniciaciones chamánicas y ser portador de semillas para expandir el despertar de la consciencia, desde la voluntad y el amor.`,
+  date: "Primavera 2025",
   background: "bg-maestria",
   footer: {
     title: "MUY IMPORTANTE",

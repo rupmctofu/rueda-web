@@ -20,6 +20,7 @@ module.exports = {
         "norte-image": "url('/norte/coca.jpg')",
         "este-image": "url('/este/temazcal.jpg')",
         "maestria-image": "url('/maestria/mishas.jpg')",
+        "temazcal-image": "url('/temazcal.jpg')",
       },
       colors: {
         sur: "#ea4b8b",

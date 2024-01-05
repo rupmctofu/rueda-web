@@ -22,14 +22,14 @@ import right from "@/assets/facilitadores/right.png";
     id="facilitadoresSlider"
     class="w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6 hide-scrollbar"
   >
-    <li class="flex shrink-0 w-4 lg:w-1/2 h-auto"></li>
+    <li class="flex shrink-0 w-4 lg:w-1/2"></li>
 
     {
       facilitadores.map(({ image, name, text }) => (
-        <li class="relative snap-center shrink-0 w-[calc(100%_-_4rem)] lg:w-auto h-auto lg:h-[550px] aspect-auto lg:aspect-[6/3.5] flex items-end">
+        <li class="relative snap-center shrink-0 w-[calc(100%_-_4rem)] lg:w-auto lg:h-[550px] aspect-auto lg:aspect-[6/3.5] flex items-end">
           <article class="relative w-full h-3/4 rounded-xl shadow-xl bg-white bg-[url('/facilitadores/card-bg.png')] flex flex-col lg:flex-row items-end gap-2 pr-8">
             <img
-              class="h-[400px] lg:h-[130%] rounded-xl -mt-20 lg:mt-0 z-20 mr-auto"
+              class="h-[400px] lg:h-[130%] -mt-20 lg:mt-0 z-20 mr-auto"
               src={image}
             />
 
@@ -53,7 +53,7 @@ import right from "@/assets/facilitadores/right.png";
     <li class="shrink-0 w-4 lg:w-1/2"></li>
   </ul>
 
-  <nav class="flex gap-2 text-white px-8">
+  <nav class="hidden lg:flex gap-2 text-white px-8">
     <button
       id="prevButton"
       class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
@@ -76,14 +76,14 @@ import right from "@/assets/facilitadores/right.png";
 
   nextButton.addEventListener("click", () => {
     facilitadoresSlider.scrollBy({
-      left: 100,
+      left: 500,
       behavior: "smooth",
     });
   });
 
   prevButton.addEventListener("click", () => {
     facilitadoresSlider.scrollBy({
-      left: -100,
+      left: -500,
       behavior: "smooth",
     });
   });

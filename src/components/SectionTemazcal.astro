@@ -1,0 +1,79 @@
+---
+import { temazcal } from "@/lib/temazcal";
+
+const {
+  image,
+  title,
+  subtitle,
+  description,
+  html,
+  background,
+  event,
+  benefitsCards,
+  footer,
+} = temazcal;
+---
+
+<div
+  class={`wfull flex aspect-[4/2] lg:aspect-[10/3] ${image} lg:bg-fixed bg-no-repeat bg-cover bg-center`}
+>
+</div>
+
+<section
+  id="temazcal"
+  class:list={[
+    "min-h-screen flex flex-col items-center bg-no-repeat bg-cover py-20 px-8 text-teal-800",
+    background,
+  ]}
+>
+  <header class="flex flex-col items-center text-center">
+    <h2 class="font-title text-7xl lg:text-9xl leading-none">
+      {title}
+    </h2>
+    <h3
+      class="tracking-[5px] lg:tracking-[10px] text-black/70 font-semibold text-2xl lg:text-4xl mt-5"
+    >
+      {subtitle}
+    </h3>
+    <p class="max-w-5xl leading-6 mt-6 text-xl text-black/70 font-semibold">
+      {description}
+    </p>
+    <p class="max-w-5xl leading-6 mt-6 text-xl text-black/70" set:html={html} />
+  </header>
+
+  <main
+    class="max-w-3xl flex flex-col items-center text-center bg-slate-300 rounded-xl py-8 px-2 w-full mt-16"
+  >
+    <time
+      class="font-semibold text-lg text-slate-50 bg-black/70 px-6 py-2 rounded-full"
+      datetime={event.date}>{event.date}</time
+    >
+
+    <h3 class="text-black/70 font-semibold text-xl lg:text-2xl mt-4">
+      {event.title}
+    </h3>
+    <p class="max-w-5xl leading-6 text-xl text-black/70">{event.description}</p>
+  </main>
+
+  <div class="max-w-3xl flex flex-col items-center text-center w-full mt-16">
+    <h3 class="text-black/70 font-semibold text-xl lg:text-2xl">
+      Beneficios del Temazcal
+    </h3>
+
+    <ul class="columns-2 mt-6">
+      {
+        benefitsCards.map((card) => (
+          <li class="text-left text-xl leading-1 py-3 mr-2 border-b border-black/30">
+            {card}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <footer
+    class="max-w-3xl flex flex-col items-center text-center bg-slate-300 rounded-xl py-8 px-2 w-full mt-16"
+  >
+    <p class="max-w-5xl leading-6 text-xl text-black/70">{footer}</p>
+  </footer>
+</section>

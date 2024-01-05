@@ -2,11 +2,11 @@
 import CardDo from "@/components/CardDo.astro";
 import { maestria } from "@/lib/maestria";
 
-const { image, title, html, background, footer, doCards } = maestria;
+const { image, title, html, date, background, footer, doCards } = maestria;
 ---
 
 <div
-  class={`wfull flex aspect-[4/2] lg:aspect-[10/3] ${image} bg-fixed bg-no-repeat bg-cover bg-center`}
+  class={`wfull flex aspect-[4/2] lg:aspect-[10/3] ${image} lg:bg-fixed bg-no-repeat bg-cover bg-center`}
 >
 </div>
 
@@ -22,6 +22,8 @@ const { image, title, html, background, footer, doCards } = maestria;
       {title}
     </h2>
     <p class="max-w-5xl leading-6 mt-6 text-xl" set:html={html} />
+
+    <time class="font-semibold text-2xl text-black/70 mt-6" datetime={date}>{date}</time>
   </header>
 
   <span
