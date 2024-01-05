@@ -11,7 +11,7 @@ import Menu from "@/icons/Menu.astro";
   <nav
     class="flex justify-between items-center max-w-6xl w-full text-gray-50 p-4 z-10"
   >
-    <Logo width="150" />
+    <Logo width="150" class="z-10" />
 
     <button id="btnMenu" class="block lg:hidden p-2 z-10">
       <Menu />
@@ -19,55 +19,55 @@ import Menu from "@/icons/Menu.astro";
 
     <ul
       id="menu"
-      class="absolute top-0 left-0 w-full lg:w-auto h-screen lg:h-auto opacity-0 lg:opacity-100 pointer-events-none lg:pointer-events-auto bg-teal-950/70 backdrop-blur lg:bg-transparent lg:backdrop-blur-0 lg:relative lg:flex gap-10 text-lg p-8 pt-32 lg:p-0 transition-all"
+      class="absolute top-0 left-0 w-full lg:w-auto h-screen lg:h-auto opacity-0 lg:opacity-100 pointer-events-none lg:pointer-events-auto bg-teal-950/70 backdrop-blur lg:bg-transparent lg:backdrop-blur-0 lg:relative lg:flex gap-10 text-sm lg:text-lg p-8 pt-32 lg:p-0 transition-all"
     >
-      <li class="hover:border-b py-4 lg:py-2 border-b lg:border-0">
+      <li class="hover:border-b py-3 lg:py-2 border-b lg:border-0">
         <a href="#la-rueda">La Rueda</a>
       </li>
-      <li class="relative group py-4 lg:py-2">
+      <li class="relative group py-3 lg:py-2">
         <a href="#direcciones">Direcciones</a>
 
         <ul
           class="pl-8 lg:px-0 lg:absolute top-3/4 lg:bg-teal-950/30 lg:backdrop-blur w-full lg:w-32 lg:border-l flex flex-col lg:opacity-0 group-hover:opacity-100 group-hover:top-full transition-all"
         >
           <li class="flex hover:bg-white hover:text-gray-400">
-            <a href="#sur" class="w-full px-4 py-4 lg:py-2 border-b lg:border-0"
+            <a href="#sur" class="w-full px-4 py-3 lg:py-2 border-b lg:border-0"
               >Sur</a
             >
           </li>
           <li class="flex hover:bg-white hover:text-gray-400">
             <a
               href="#oeste"
-              class="w-full px-4 py-4 lg:py-2 border-b lg:border-0">Oeste</a
+              class="w-full px-4 py-3 lg:py-2 border-b lg:border-0">Oeste</a
             >
           </li>
           <li class="flex hover:bg-white hover:text-gray-400">
             <a
               href="#norte"
-              class="w-full px-4 py-4 lg:py-2 border-b lg:border-0">Norte</a
+              class="w-full px-4 py-3 lg:py-2 border-b lg:border-0">Norte</a
             >
           </li>
           <li class="flex hover:bg-white hover:text-gray-400">
             <a
               href="#este"
-              class="w-full px-4 py-4 lg:py-2 border-b lg:border-0">Este</a
+              class="w-full px-4 py-3 lg:py-2 border-b lg:border-0">Este</a
             >
           </li>
         </ul>
       </li>
-      <li class="py-4 lg:py-2 border-b lg:border-0 hover:border-b">
+      <li class="py-3 lg:py-2 border-b lg:border-0 hover:border-b">
         <a href="#maestria">Maestría</a>
       </li>
-      <li class="py-4 lg:py-2 border-b lg:border-0 hover:border-b">
+      <li class="py-3 lg:py-2 border-b lg:border-0 hover:border-b">
         <a href="#temazcal">Temazcal</a>
       </li>
-      <li class="py-4 lg:py-2 border-b lg:border-0 hover:border-b">
+      <li class="py-3 lg:py-2 border-b lg:border-0 hover:border-b">
         <a href="#facilitadores">Facilitadores</a>
       </li>
-      <li class="py-4 lg:py-2 border-b lg:border-0 hover:border-b">
+      <li class="py-3 lg:py-2 border-b lg:border-0 hover:border-b">
         <a href="#espai-la-kalma">El lugar</a>
       </li>
-      <li class="py-4 lg:py-2 border-b lg:border-0 hover:border-b">
+      <li class="py-3 lg:py-2 border-b lg:border-0 hover:border-b">
         <a href="#contacto">Contacto</a>
       </li>
     </ul>
