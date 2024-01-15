@@ -5,7 +5,7 @@ export const directions = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "del 4 al 7 de enero",
+    date: "del 1 al 4 de agosto",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [

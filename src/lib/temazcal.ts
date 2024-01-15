@@ -8,9 +8,9 @@ export const temazcal = {
   background: "bg-maestria",
   event: {
     date: "3 y 4 de febrero",
-    title: "TEMAZCAL",
+    title: "TEMAZCAL empezará a las 12:00 el día 3 y finalizará el 4 a las 12:00.",
     description:
-      "Recibiendo el invierno y templando nuestro fuego interno.</br> *En esta ocasión solo se celebrará el temazcal, si quieres pasar la noche, contáctanos.",
+      "Temazcal, cena, dormir, desayuno y sanación chamánica",
   },
   benefitsCards: [
     "Depura las vías respiratorias y el aparato digestivo.",
