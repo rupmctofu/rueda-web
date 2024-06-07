@@ -98,7 +98,7 @@ export const directions = [
     title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y lA maestra interna",
-    date: "del 7 al 10 de Marzo & del 29 de Agosto al 1 de Septiembre",
+    date: "del 19 al 22 de Septiembre",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
     background: "bg-norte",
     footer: "CONSEGUIRÁS",

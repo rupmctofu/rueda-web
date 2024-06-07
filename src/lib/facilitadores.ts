@@ -20,9 +20,5 @@ export const facilitadores = [
     text: `
     Maestra chamana en formación, artesana, aprendiz de tarotista y estudiante de astrología. Desperté espiritualmente temprano, sumergiéndome en la Teosofía y el Ocultismo. Mi camino me llevó a Lidia, donde mis inquietudes tomaron sentido. Me comprometí al servicio de la luz y el amor, buscando mi sanación. Aprendí a hallar luz en mi oscuridad y descubrí que con mi magia puedo ayudar a otros en su camino espiritual.`,
   },
-  {
-    image: "/facilitadores/lidia.png",
-    name: "Pilar Julián Aguilar",
-    text: `Artesana y Mujer medicina en la cocina.`,
-  }
+
 ];
