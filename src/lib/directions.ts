@@ -55,7 +55,7 @@ export const directions = [
     title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
-    date: "del 29 de mayo al 2 de junio",
+    date: "del 30 de octubre al 3 de novembre",
     html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
     background: "bg-oeste",
     footer: "CONSEGUIRÁS",
