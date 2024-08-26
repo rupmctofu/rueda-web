@@ -5,7 +5,7 @@ export const directions = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "del 1 al 4 de Agosto",
+    date: "Mallorca 10-13 Octubre | Espailakalma 2-5 Enero 2025",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
