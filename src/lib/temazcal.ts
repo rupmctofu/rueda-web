@@ -8,15 +8,21 @@ export const temazcal = {
   background: "bg-maestria",
   event: {
     date: "27 de Octubre",
-    title: "TEMAZCAL MUJERES",
+    title: "TEMAZCAL MIXTO",
     description:
-      "Temazcal exlusivo para mujeres",
+      "A las 12h",
     },
     event2: {
-      date: "21 de Diciembre a las 12h",
-      title: "TEMAZCAL",
+      date: "23 y 24 Noviembre",
+      title: "TEMAZCAL MUJERES",
       description:
-        "Solsticio de invierno",
+        "Temazcal exclusivo mujeres, con alojamiento y sanación de útero, del 23 a las 16:00 al 24 a las 12:00.",
+      },
+          event3: {
+      date: "21 de Diciembre",
+      title: "TEMAZCAL SOLSTICIO",
+      description:
+        "a las 12h",
       },
   benefitsCards: [
     "Depura las vías respiratorias y el aparato digestivo.",
