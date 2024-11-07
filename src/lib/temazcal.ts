@@ -24,6 +24,13 @@ export const temazcal = {
       description:
         "a las 12h",
       },
+      event4: {
+        date: "25-26 de Enero",
+        title: "TEMAZCAL",
+        description:
+          "a las 12h",
+        },
+        
   benefitsCards: [
     "Depura las vías respiratorias y el aparato digestivo.",
     "Tonifica el sistema nervioso.",
@@ -47,4 +54,5 @@ export const temazcal = {
   ],
   footer:
     "Aparte de todas las propiedades físicas, el temazcal trabaja a nivel emocional sanando heridas presentes, pasadas y mostrándote tu sombra. ",
+
 };
