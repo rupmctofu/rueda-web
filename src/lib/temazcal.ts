@@ -7,24 +7,18 @@ export const temazcal = {
   html: `Los Q'eros han visitado y compartido sus enseñanzas en Tarragona varias veces en los 10 años de escuela, los Pampamesayok, Don Alejandro Apaza, Doña Santusa P'aco Ñusta y Altomesayok, Doña María Apaza Quispe, única Kurac akullac auténtica del linaje y la tradición Q'ero y el antropólogo y estudiador de la cultura Q'ero Don Juan Nuñez del Prado y su hijo han impartido cosmología andina, en nuestro espacio en Salomó Tarragona.`,
   background: "bg-maestria",
   event: {
-    date: "10 de Nobiembre",
-    title: "TEMAZCAL MIXTO",
-    description:
-      "A las 12h",
-    },
-    event2: {
       date: "23 y 24 Noviembre",
       title: "TEMAZCAL MUJERES",
       description:
         "Temazcal exclusivo mujeres, con alojamiento y sanación de útero, del 23 a las 16:00 al 24 a las 12:00.",
       },
-          event3: {
+          event2: {
       date: "21 de Diciembre",
       title: "TEMAZCAL SOLSTICIO",
       description:
         "a las 12h",
       },
-      event4: {
+      event3: {
         date: "25-26 de Enero",
         title: "TEMAZCAL",
         description:
