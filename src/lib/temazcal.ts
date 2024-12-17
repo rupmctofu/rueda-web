@@ -12,6 +12,18 @@ event: {
       description:
         "a las 12h",
       },
+event2: {
+      date: "1 y 2 de febrero",
+      title: "TEMAZCAL MIXTO",
+      description:
+        "a las 12h",
+      },
+event3: {
+      date: "15 y 16 febrero",
+      title: "TEMAZCAL DE MUJERES",
+      description:
+        "a las 12h | Despertar de tu chamana y mujer medicina",
+      },
   
         
   benefitsCards: [
