@@ -55,7 +55,7 @@ export const directions = [
     title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
-    date: "Mallorca 23 al 27 Abril | Tarragona 30 abril al 4 Mayo",
+    date: "Mallorca 23 al 27 Abril",
     html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
     background: "bg-oeste",
     footer: "CONSEGUIRÁS",
