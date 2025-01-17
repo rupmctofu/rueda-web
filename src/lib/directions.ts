@@ -5,7 +5,7 @@ export const directions = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "Mallorca 3-6 Enero | Tarragona 6-9 Marzo & 21-24 Agosto",
+    date: "Mallorca 12-15 Junio | Tarragona 6-9 Marzo & 21-24 Agosto",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
