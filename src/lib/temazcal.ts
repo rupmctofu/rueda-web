@@ -18,7 +18,12 @@ event2: {
       description:
         "a las 12h | Despertar de tu chamana y mujer medicina",
       },
-  
+      event3: {
+        date: "29 y 30 de marzo",
+        title: "TEMAZCAL",
+        description:
+          "Mixto",
+        },
         
   benefitsCards: [
     "Depura las vías respiratorias y el aparato digestivo.",
