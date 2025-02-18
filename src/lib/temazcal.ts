@@ -6,13 +6,7 @@ export const temazcal = {
     "Lídia Hidalgo, con más de 15 años al servicio, portadora de la chanupa y autorizada por la  abuela Margarita. Maestra chamana.",
   html: `Los Q'eros han visitado y compartido sus enseñanzas en Tarragona varias veces en los 10 años de escuela, los Pampamesayok, Don Alejandro Apaza, Doña Santusa P'aco Ñusta y Altomesayok, Doña María Apaza Quispe, única Kurac akullac auténtica del linaje y la tradición Q'ero y el antropólogo y estudiador de la cultura Q'ero Don Juan Nuñez del Prado y su hijo han impartido cosmología andina, en nuestro espacio en Salomó Tarragona.`,
   background: "bg-maestria",
-event: {
-      date: "15 y 16 febrero",
-      title: "TEMAZCAL DE MUJERES",
-      description:
-        "a las 12h | Despertar de tu chamana y mujer medicina",
-      },
-      event2: {
+      event: {
         date: "8 y 9 de marzo",
         title: "TEMAZCAL",
         description: "Mixto",
