@@ -5,7 +5,7 @@ export const directions = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "27-30 Agosto 2026",
+    date: "21 al 24 Mayo | 27-30 Agosto 2026",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
