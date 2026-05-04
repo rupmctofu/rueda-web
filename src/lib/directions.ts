@@ -98,7 +98,7 @@ export const directions = [
     title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y la maestra interna",
-    date: "30 Abril a 3 Mayo 2026",
+    date: "Fechas por confirmar",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
     background: "bg-norte",
     footer: "CONSEGUIRÁS",
