@@ -5,7 +5,7 @@ export const directions = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "27-30 Agosto 2026",
+    date: "4-8 de diciembre 2026",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
@@ -98,7 +98,7 @@ export const directions = [
     title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y la maestra interna",
-    date: "Fechas por confirmar",
+    date: "29 abril al 2 de mayo 2026",
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
     background: "bg-norte",
     footer: "CONSEGUIRÁS",
