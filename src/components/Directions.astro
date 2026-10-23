@@ -1,7 +1,7 @@
 ---
 import { directions } from "@/lib/directions";
-import CardDo from "@/components/CardDo.astro";
 import SectionBanner from "@/components/SectionBanner.astro";
+import DoCards from "@/components/DoCards.astro";
 ---
 
 <Fragment>
@@ -58,15 +58,7 @@ import SectionBanner from "@/components/SectionBanner.astro";
               ¿QUÉ HARÁS?
             </span>
 
-            <ul class="max-w-6xl -mt-4 flex flex-wrap bg-white rounded-2xl overflow-hidden w-full">
-              {doCards.map(({ icon, html }) => (
-                <li class="grow basis-0 min-w-[200px] even:bg-gray-50">
-                  <CardDo icon={icon}>
-                    <Fragment set:html={html} />
-                  </CardDo>
-                </li>
-              ))}
-            </ul>
+            <DoCards cards={doCards} />
 
             <div class="flex items-center w-full max-w-6xl py-5 mt-20">
               <span class={`flex grow h-[2px] bg-black`} />
