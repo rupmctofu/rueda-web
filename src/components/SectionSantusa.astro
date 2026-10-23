@@ -1,3 +1,7 @@
+---
+import Button from "@/components/Button.astro";
+---
+
 <section
   id="santusa"
   class="min-h-screen flex flex-col items-center bg-[url('/la-vision/vision-bg.jpg')] bg-no-repeat bg-cover text-stone-500"
@@ -44,17 +48,17 @@
   </main>
 
   <footer class="flex flex-wrap justify-center text-center w-full gap-4 mt-16 mb-16">
-    <a
+    <Button
       href="/santusa/Santusa.pdf"
       target="_blank"
-      class="min-w-[250px] tracking-widest text-lg border-2 border-stone-500 bg-stone-500 text-stone-100 rounded-full px-12 py-2 font-semibold hover:bg-stone-700 hover:border-stone-700 transition"
-      >INFORMACIÓN</a
+      variant="solid"
+      class="min-w-[250px]"
     >
-    <a
-      href="/#contacto"
-      class="min-w-[250px] tracking-widest text-lg border-2 border-stone-500 rounded-full px-12 py-2 font-semibold hover:border-stone-700 hover:text-stone-700 transition"
-      >APUNTARME</a
-    >
+      INFORMACIÓN
+    </Button>
+    <Button href="/#contacto" variant="outline-stone" class="min-w-[250px]">
+      APUNTARME
+    </Button>
   </footer>
 
   

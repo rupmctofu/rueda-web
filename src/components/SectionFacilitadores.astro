@@ -1,6 +1,7 @@
 ---
 import { facilitadores } from "@/lib/facilitadores";
 import SectionBanner from "@/components/SectionBanner.astro";
+import Button from "@/components/Button.astro";
 ---
 
 <SectionBanner
@@ -52,18 +53,8 @@ import SectionBanner from "@/components/SectionBanner.astro";
   </ul>
 
   <nav class="hidden lg:flex gap-2 text-white px-8">
-    <button
-      id="prevButton"
-      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
-    >
-      ANTERIOR
-    </button>
-    <button
-      id="nextButton"
-      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
-    >
-      SIGUIENTE
-    </button>
+    <Button id="prevButton" size="lg">ANTERIOR</Button>
+    <Button id="nextButton" size="lg">SIGUIENTE</Button>
   </nav>
 </section>
 

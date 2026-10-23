@@ -1,0 +1,50 @@
+---
+interface Props {
+  href?: string;
+  target?: string;
+  id?: string;
+  type?: "button" | "submit" | "reset";
+  variant?: "light" | "solid" | "outline-stone";
+  size?: "md" | "lg";
+  class?: string;
+}
+
+const {
+  href,
+  target,
+  id,
+  type = "button",
+  variant = "light",
+  size = "md",
+  class: className,
+} = Astro.props;
+
+const base = "tracking-widest text-lg rounded-full font-semibold transition border-2";
+
+const variants = {
+  light: "border-gray-50 hover:bg-gray-50 hover:text-gray-400",
+  solid:
+    "border-stone-500 bg-stone-500 text-stone-100 hover:bg-stone-700 hover:border-stone-700",
+  "outline-stone":
+    "border-stone-500 hover:border-stone-700 hover:text-stone-700",
+};
+
+const sizes = {
+  md: "px-12 py-2",
+  lg: "px-6 lg:px-12 py-2",
+};
+
+const classes = [base, variants[variant], sizes[size], className];
+---
+
+{
+  href ? (
+    <a href={href} target={target} id={id} class:list={classes}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} id={id} class:list={classes}>
+      <slot />
+    </button>
+  )
+}
