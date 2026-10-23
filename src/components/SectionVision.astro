@@ -1,3 +1,7 @@
+---
+import Button from "@/components/Button.astro";
+---
+
 <section
   id="la-vision"
   class="min-h-screen flex flex-col items-center bg-[url('/la-vision/vision-bg.jpg')] bg-no-repeat bg-cover text-stone-500"
@@ -23,7 +27,7 @@
       temazcales, comida rica, río, naturaleza, trabajos energéticos, caminatas
       de poder, tambores y mucho, mucho más?
     </h2>
-    <p class="max-w-6xl leading-6 text-xxl text-black/70 mt-5">
+    <p class="max-w-6xl leading-6 text-black/70 mt-5">
       Iniciamos el recorrido de 4 ciclos, 4 rezos y cuatro años, para facilitar
       al participante a formarse en la magia del Temazcal y recordar quién es,
       empoderarse y vivir la experiencia de estar en contacto directo con la
@@ -32,17 +36,17 @@
   </main>
 
   <footer class="flex flex-wrap justify-center text-center w-full gap-4 mt-16">
-    <a
+    <Button
       href="/la-vision/la-busqueda-de-vision.pdf"
       target="_blank"
-      class="min-w-[250px] tracking-widest text-lg border-2 border-stone-500 bg-stone-500 text-stone-100 rounded-full px-12 py-2 font-semibold hover:bg-stone-700 hover:border-stone-700 transition"
-      >INFORMACIÓN</a
+      variant="solid"
+      class="min-w-[250px]"
     >
-    <a
-      href="/#contacto"
-      class="min-w-[250px] tracking-widest text-lg border-2 border-stone-500 rounded-full px-12 py-2 font-semibold hover:border-stone-700 hover:text-stone-700 transition"
-      >APUNTARME</a
-    >
+      INFORMACIÓN
+    </Button>
+    <Button href="/#contacto" variant="outline-stone" class="min-w-[250px]">
+      APUNTARME
+    </Button>
   </footer>
 
   <figure class="w-full">
@@ -50,6 +54,8 @@
       src="/la-vision/mountains.svg"
       width="100%"
       alt="Montañas de la Visión"
+      loading="lazy"
+      decoding="async"
     />
   </figure>
 </section>

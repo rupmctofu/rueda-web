@@ -1,4 +1,6 @@
-export const facilitadores = [
+import type { Facilitador } from "@/lib/types";
+
+export const facilitadores: Array<Facilitador> = [
   {
     image: "/facilitadores/lidia.png",
     name: "Lidia Hidalgo",

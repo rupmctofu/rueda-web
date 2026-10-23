@@ -1,11 +1,13 @@
 ---
 import { facilitadores } from "@/lib/facilitadores";
+import SectionBanner from "@/components/SectionBanner.astro";
+import Button from "@/components/Button.astro";
 ---
 
-<div
-  class="wfull flex aspect-[4/2] lg:aspect-[10/4] bg-[url('/facilitadores/montserrat.jpg')] lg:bg-fixed bg-no-repeat bg-cover bg-center"
->
-</div>
+<SectionBanner
+  image="bg-[url('/facilitadores/montserrat.jpg')]"
+  aspect="lg:aspect-[10/4]"
+/>
 
 <section
   id="facilitadores"
@@ -28,19 +30,33 @@ import { facilitadores } from "@/lib/facilitadores";
             <img
               class="h-[400px] lg:h-[130%] -mt-20 lg:mt-0 z-20 mr-auto"
               src={image}
+              loading="lazy"
+              decoding="async"
             />
 
             <main class="flex flex-col pl-8 lg:pl-0 mt-4 lg:mt-0 mb-72 lg:mb-8">
               <h3 class="w-full font-bold text-3xl lg:text-5xl">{name}</h3>
-              <p class="w-full text-md ld:text-lg leading-1">{text}</p>
+              <p class="w-full">{text}</p>
             </main>
 
             <span class="absolute top-[400px] lg:top-auto -translate-y-full lg:translate-y-0 lg:bottom-0 left-0 z-20 pointer-events-none rounded-bl-xl overflow-hidden -mt-20 lg:mt-0">
-              <img src="/facilitadores/left.png" alt="Ornamentación inca" width="250" />
+              <img
+                src="/facilitadores/left.png"
+                alt="Ornamentación inca"
+                width="250"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
 
             <span class="absolute top-0 right-0 z-10 pointer-events-none rounded-tr-xl overflow-hidden">
-              <img src="/facilitadores/right.png" alt="Ornamentación inca" width="200" />
+              <img
+                src="/facilitadores/right.png"
+                alt="Ornamentación inca"
+                width="200"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
           </article>
         </li>
@@ -51,18 +67,8 @@ import { facilitadores } from "@/lib/facilitadores";
   </ul>
 
   <nav class="hidden lg:flex gap-2 text-white px-8">
-    <button
-      id="prevButton"
-      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
-    >
-      ANTERIOR
-    </button>
-    <button
-      id="nextButton"
-      class="tracking-widest text-lg border-2 border-gray-50 rounded-full px-6 lg:px-12 py-2 font-semibold hover:bg-gray-50 hover:text-gray-400 transition"
-    >
-      SIGUIENTE
-    </button>
+    <Button id="prevButton" size="lg">ANTERIOR</Button>
+    <Button id="nextButton" size="lg">SIGUIENTE</Button>
   </nav>
 </section>
 

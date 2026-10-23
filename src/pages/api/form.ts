@@ -13,6 +13,8 @@ const client = new SMTPClient({
   ssl: true,
 });
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
