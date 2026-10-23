@@ -3,6 +3,15 @@ export type Card = {
   html: string;
 };
 
+export type DirectionKey = "sur" | "oeste" | "norte" | "este";
+
+/** Contenido editable desde el panel de /admin (src/data/fechas.json). */
+export type Fechas = {
+  directions: Record<DirectionKey, string>;
+  temazcalEvents: Array<TemazcalEvent>;
+  maestria: string;
+};
+
 export type Direction = {
   image: string;
   pretitle: string;
