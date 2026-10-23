@@ -1,4 +1,6 @@
-export const temazcal = {
+import type { Temazcal } from "@/lib/types";
+
+export const temazcal: Temazcal = {
   image: "bg-temazcal-image",
   title: "TEMAZCAL",
   subtitle: "¿QUÍEN CODUCE EL TEMAZCAL?",

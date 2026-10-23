@@ -1,4 +1,6 @@
-export const directionCards = [
+import type { DirectionCard } from "@/lib/types";
+
+export const directionCards: Array<DirectionCard> = [
   {
     background: "bg-sur",
     image: "snake",

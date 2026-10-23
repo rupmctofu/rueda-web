@@ -1,4 +1,6 @@
-export const directions = [
+import type { Direction } from "@/lib/types";
+
+export const directions: Array<Direction> = [
   {
     image: "bg-sur-image",
     pretitle: "PRIMERA DIRECCIÓN",
