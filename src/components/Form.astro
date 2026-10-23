@@ -47,7 +47,7 @@
 
     <button
       type="reset"
-      class="tracking-widest text-lg rounded-full p-2 font-semibolds hover:text-gray-400 transition"
+      class="tracking-widest text-lg rounded-full p-2 hover:text-gray-400 transition"
     >
       Limpiar formulario
     </button>
@@ -92,7 +92,6 @@
     });
 
     if (!res.ok) {
-      console.log(await res.json());
       showResponse("Ha ocurrido un error. Por favor vuelve a intentarlo.");
       return;
     }

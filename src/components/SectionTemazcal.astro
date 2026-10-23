@@ -10,15 +10,13 @@ const {
   background,
   event,
   event2,
-  event3,
-  event4,
   benefitsCards,
   footer,
 } = temazcal;
 ---
 
 <div
-  class={`wfull flex aspect-[4/2] lg:aspect-[10/3] ${image} lg:bg-fixed bg-no-repeat bg-cover bg-center`}
+  class={`w-full flex aspect-[4/2] lg:aspect-[10/3] ${image} lg:bg-fixed bg-no-repeat bg-cover bg-center`}
 >
 </div>
 
@@ -81,7 +79,7 @@ const {
     <ul class="columns-2 mt-6">
       {
         benefitsCards.map((card) => (
-          <li class="text-left text-xl leading-1 py-3 mr-2 border-b border-black/30">
+          <li class="text-left text-xl py-3 mr-2 border-b border-black/30">
             {card}
           </li>
         ))
