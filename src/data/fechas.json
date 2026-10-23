@@ -1,0 +1,21 @@
+{
+  "directions": {
+    "sur": "4 al 8 de diciembre 2026",
+    "oeste": "4 al 8 de diciembre 2026",
+    "norte": "8 al 11 de abril 2027",
+    "este": "23 al 27 de junio 2027"
+  },
+  "temazcalEvents": [
+    {
+      "date": "24 y 25 de octubre 2026",
+      "title": "TEMAZCAL MIXTO",
+      "description": ""
+    },
+    {
+      "date": "20 de diciembre 2026, 11h",
+      "title": "Temazcal de solsticio invierno",
+      "description": ""
+    }
+  ],
+  "maestria": "Fechas por confirmar"
+}

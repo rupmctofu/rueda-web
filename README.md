@@ -52,3 +52,14 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Panel de fechas (/admin)
+
+La web incluye un panel con contraseña para actualizar las fechas de las
+direcciones, del temazcal y de la maestría. Las fechas se guardan en
+`src/data/fechas.json` y el panel hace un commit en el repositorio, de modo que
+Netlify redespliega solo.
+
+- Documentación y variables de entorno: [`docs/admin-fechas.md`](docs/admin-fechas.md)
+- Tests de la lógica del panel: `npm test` (runner nativo de Node, sin
+  dependencias nuevas)

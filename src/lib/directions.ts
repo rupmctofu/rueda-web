@@ -1,4 +1,5 @@
 import type { Direction } from "@/lib/types";
+import { fechas } from "@/lib/fechas";
 
 export const directions: Array<Direction> = [
   {
@@ -7,7 +8,7 @@ export const directions: Array<Direction> = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "4 al 8 de diciembre 2026",
+    date: fechas.directions.sur,
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
@@ -57,7 +58,7 @@ export const directions: Array<Direction> = [
     title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
-    date: "4 al 8 de diciembre 2026",
+    date: fechas.directions.oeste,
     html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
     background: "bg-oeste",
     footer: "CONSEGUIRÁS",
@@ -100,7 +101,7 @@ export const directions: Array<Direction> = [
     title: "norte",
     subtitle: "COLIBRÍ",
     description: "La dirección del y la maestra interna",
-    date: "8 al 11 de abril 2027",
+    date: fechas.directions.norte,
     html: `En esta dirección alegre, emocional, los roles, los maestros y el compromiso, TU COMPROMISO contigo, estará muy presente y podrás observar y <strong class="font-semibold">reconocer el o la maestra sabia interna que está en ti.</strong>`,
     background: "bg-norte",
     footer: "CONSEGUIRÁS",
@@ -151,7 +152,7 @@ export const directions: Array<Direction> = [
     title: "este",
     subtitle: "ÁGUILA Y CÓNDOR",
     description: "INTEGRACIÓN",
-    date: "23 al 27 de junio 2027",
+    date: fechas.directions.este,
     html: `La dirección donde <strong class="font-semibold">recapitulamos e integramos todo lo aprendido</strong>. La gran muerte de nuestro antiguo personaje. Rescate de tu “ánimu” perdido por algún trauma consciente o inconsciente. De una dirección a otra pueden ser unos 4 meses, cuando llegas a la dirección del sabio, todo se ve desde otra perspectiva, no existe el tiempo.`,
     background: "bg-este",
     footer: "INTEGRAMOS",

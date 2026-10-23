@@ -1,10 +1,11 @@
 import type { Maestria } from "@/lib/types";
+import { fechas } from "@/lib/fechas";
 
 export const maestria: Maestria = {
   image: "bg-maestria-image",
   title: "MAESTRÍA",
   html: `Después de las 4 direcciones, la MAESTRÍA, que es para aprender a compartir y poner en práctica todas las iniciaciones chamánicas y ser portador de semillas para expandir el despertar de la consciencia, desde la voluntad y el amor.`,
-  date: "Fechas por confirmar",
+  date: fechas.maestria,
   background: "bg-maestria",
   footer: {
     title: "MUY IMPORTANTE",
