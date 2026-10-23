@@ -11,6 +11,7 @@ import Button from "@/components/Button.astro";
 
   <fieldset class="flex flex-col mt-12 gap-4 w-full">
     <label for="fullname" class="w-full disabled">
+      <span class="sr-only">Nombre completo</span>
       <input
         type="text"
         id="fullname"
@@ -21,6 +22,7 @@ import Button from "@/components/Button.astro";
       />
     </label>
     <label for="email">
+      <span class="sr-only">Correo electrónico</span>
       <input
         type="email"
         id="email"
@@ -31,6 +33,7 @@ import Button from "@/components/Button.astro";
       />
     </label>
     <label for="message">
+      <span class="sr-only">Tu mensaje</span>
       <textarea
         name="message"
         id="message"
@@ -51,7 +54,7 @@ import Button from "@/components/Button.astro";
       Limpiar formulario
     </button>
 
-    <p class="text-gray-400 md:ml-auto" id="response" hidden></p>
+    <p class="text-gray-400 md:ml-auto" id="response" role="status" aria-live="polite" hidden></p>
   </fieldset>
 </form>
 

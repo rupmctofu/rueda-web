@@ -28,7 +28,7 @@ import DoCards from "@/components/DoCards.astro";
           <section
             id={title}
             class:list={[
-              "min-h-screen flex flex-col items-center bg-no-repeat bg-cover py-20 px-8",
+              "min-h-screen scroll-mt-24 flex flex-col items-center bg-no-repeat bg-cover py-20 px-8",
               background,
             ]}
           >
@@ -71,7 +71,7 @@ import DoCards from "@/components/DoCards.astro";
             <ul class="flex flex-wrap w-full max-w-6xl mt-6 text-slate-50">
               {footerCards.map(({ icon, html }) => (
                 <li class="flex flex-col lg:flex-row items-center lg:items-start w-full lg:w-1/2 gap-6 p-6">
-                  <img src={icon} class="w-24 aspect-square" alt="Icon" />
+                  <img src={icon} class="w-24 aspect-square" alt="" />
                   <p class="text-xl text-center lg:text-left">
                     <Fragment set:html={html} />
                   </p>

@@ -13,13 +13,19 @@ import Menu from "@/icons/Menu.astro";
   >
     <Logo width="150" class="z-10" />
 
-    <button id="btnMenu" class="block lg:hidden p-2 z-10">
+    <button
+      id="btnMenu"
+      class="block lg:hidden p-2 z-10"
+      aria-label="Abrir menú"
+      aria-controls="menu"
+      aria-expanded="false"
+    >
       <Menu />
     </button>
 
     <ul
       id="menu"
-      class="absolute top-0 left-0 w-full lg:w-auto h-screen lg:h-auto opacity-0 lg:opacity-100 pointer-events-none lg:pointer-events-auto bg-teal-950/70 backdrop-blur lg:bg-transparent lg:backdrop-blur-0 lg:relative lg:flex gap-10 text-sm lg:text-lg p-8 pt-32 lg:p-0 transition-all"
+      class="absolute top-0 left-0 w-full lg:w-auto h-screen lg:h-auto opacity-0 lg:opacity-100 invisible lg:visible pointer-events-none lg:pointer-events-auto bg-teal-950/70 backdrop-blur lg:bg-transparent lg:backdrop-blur-0 lg:relative lg:flex gap-10 text-sm lg:text-lg p-8 pt-32 lg:p-0 transition-all"
     >
       <li class="relative group py-3 lg:py-2">
         <a href="#la-rueda">La Rueda</a>
@@ -86,16 +92,20 @@ import Menu from "@/icons/Menu.astro";
     const menu = document.querySelector("#menu");
     const links = document.querySelectorAll("nav a");
 
+    const setMenuOpen = (open: boolean) => {
+      menu.classList.toggle("opacity-0", !open);
+      menu.classList.toggle("pointer-events-none", !open);
+      menu.classList.toggle("invisible", !open);
+      btnMenu.setAttribute("aria-expanded", String(open));
+      btnMenu.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    };
+
     btnMenu.addEventListener("click", () => {
-      menu.classList.toggle("opacity-0");
-      menu.classList.toggle("pointer-events-none");
+      setMenuOpen(menu.classList.contains("opacity-0"));
     });
 
     links.forEach((link) => {
-      link.addEventListener("click", () => {
-        menu.classList.add("opacity-0");
-        menu.classList.add("pointer-events-none");
-      });
+      link.addEventListener("click", () => setMenuOpen(false));
     });
   }
 </script>

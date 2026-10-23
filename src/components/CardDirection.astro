@@ -22,7 +22,7 @@ const { background, image, title, label, html, footer } = Astro.props;
     <picture class="w-[250px]">
       <img
         src={`/directions/${image}.png`}
-        alt={title}
+        alt=""
         width="272"
         height="272"
         loading="lazy"
@@ -33,7 +33,7 @@ const { background, image, title, label, html, footer } = Astro.props;
     <h3 class="text-6xl font-title">{title}</h3>
   </header>
 
-  <main class="flex flex-col items-center px-6">
+  <div class="flex flex-col items-center px-6">
     <span
       class="font-bold tracking-wider text-[#392B4F] rounded-full mt-3 bg-slate-50 px-4"
     >
@@ -41,7 +41,7 @@ const { background, image, title, label, html, footer } = Astro.props;
     </span>
 
     <p class="font-title text-xl leading-[20px] mt-3" set:html={html} />
-  </main>
+  </div>
 
   <footer class="flex justify-center w-full px-6 mt-auto">
     <span

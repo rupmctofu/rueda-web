@@ -39,7 +39,13 @@ const classes = [base, variants[variant], sizes[size], className];
 
 {
   href ? (
-    <a href={href} target={target} id={id} class:list={classes}>
+    <a
+      href={href}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      id={id}
+      class:list={classes}
+    >
       <slot />
     </a>
   ) : (

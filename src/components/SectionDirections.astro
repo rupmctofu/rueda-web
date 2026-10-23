@@ -5,7 +5,7 @@ import CardDirection from "./CardDirection.astro";
 
 <section
   id="direcciones"
-  class="flex flex-col bg-[url('/directions-bg.jpg')] w-full"
+  class="flex flex-col scroll-mt-24 bg-[url('/directions-bg.jpg')] w-full"
 >
   <picture class="h-24 mb-32 bg-[url('/label.jpg')]"></picture>
 
@@ -15,7 +15,7 @@ import CardDirection from "./CardDirection.astro";
     </h2>
   </header>
 
-  <main class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center w-full">
     <ul class="flex flex-wrap justify-center items-stretch gap-2">
       {
         directionCards.map((card) => (
@@ -25,7 +25,7 @@ import CardDirection from "./CardDirection.astro";
         ))
       }
     </ul>
-  </main>
+  </div>
 
   <picture class="h-24 mt-32 bg-[url('/label.jpg')] rotate-180"></picture>
 </section>
