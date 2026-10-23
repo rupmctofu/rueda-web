@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Fechas de la web · Espai La Kalma</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --fondo: #f4f1ea;
+        --texto: #1f2a2e;
+        --teal: #164752;
+        --teal-claro: #e3ecee;
+        --borde: #c9d3d3;
+        --error: #8c2f22;
+        --ok: #245c3a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 1.5rem 1rem 4rem;
+        background: var(--fondo);
+        color: var(--texto);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        max-width: 40rem;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+        margin: 0 0 0.25rem;
+        color: var(--teal);
+      }
+
+      .intro {
+        margin: 0 0 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      fieldset {
+        border: 1px solid var(--borde);
+        border-radius: 0.75rem;
+        background: #fff;
+        margin: 0 0 1rem;
+        padding: 1rem 1rem 1.25rem;
+      }
+
+      legend {
+        font-weight: 700;
+        padding: 0 0.4rem;
+        color: var(--teal);
+      }
+
+      label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 0.85rem;
+      }
+
+      label:first-of-type {
+        margin-top: 0;
+      }
+
+      .ayuda {
+        display: block;
+        font-weight: 400;
+        font-size: 0.78rem;
+        color: #55707a;
+      }
+
+      input {
+        width: 100%;
+        margin-top: 0.3rem;
+        padding: 0.55rem 0.7rem;
+        font: inherit;
+        color: inherit;
+        border: 1px solid var(--borde);
+        border-radius: 0.5rem;
+        background: #fdfdfc;
+      }
+
+      input:focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: 1px;
+      }
+
+      button {
+        font: inherit;
+        font-weight: 700;
+        color: #fff;
+        background: var(--teal);
+        border: 0;
+        border-radius: 999px;
+        padding: 0.7rem 1.6rem;
+        cursor: pointer;
+      }
+
+      button[type="button"] {
+        background: transparent;
+        color: var(--teal);
+        border: 1px solid var(--borde);
+        font-weight: 600;
+        padding: 0.45rem 1rem;
+      }
+
+      button:disabled {
+        opacity: 0.6;
+        cursor: progress;
+      }
+
+      .acciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin-top: 1.25rem;
+      }
+
+      .mensaje {
+        margin-top: 1rem;
+        padding: 0.8rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.92rem;
+        min-height: 1rem;
+      }
+
+      .mensaje[data-tipo="error"] {
+        background: #fbeae7;
+        color: var(--error);
+      }
+
+      .mensaje[data-tipo="ok"] {
+        background: #e6f1e9;
+        color: var(--ok);
+      }
+
+      .nota {
+        font-size: 0.85rem;
+        color: #55707a;
+        margin: 0.75rem 0 0;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Fechas de la web</h1>
+      <p class="intro">
+        Cambia las fechas de las direcciones y del temazcal. Al guardar, la web
+        se actualiza sola en un par de minutos.
+      </p>
+
+      <section id="acceso" hidden>
+        <form id="form-acceso">
+          <fieldset>
+            <legend>Entrar</legend>
+            <label for="password">
+              Contraseña
+              <span class="ayuda">La que te ha dado el administrador de la web.</span>
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+            <div class="acciones">
+              <button type="submit" id="btn-acceso">Entrar</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="panel" hidden>
+        <form id="form-fechas">
+          <fieldset>
+            <legend>Las cuatro direcciones</legend>
+            <div id="campos-direcciones"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Temazcal</legend>
+            <div id="campos-temazcal"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Maestría</legend>
+            <div id="campos-maestria"></div>
+          </fieldset>
+
+          <div class="acciones">
+            <button type="submit" id="btn-guardar">Guardar cambios</button>
+            <button type="button" id="btn-salir">Salir</button>
+          </div>
+          <p class="nota">
+            Para dejar una fecha en blanco, borra su texto y guarda: en la web
+            aparecerá vacía.
+          </p>
+        </form>
+      </section>
+
+      <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+      <noscript>
+        <p class="mensaje" data-tipo="error">
+          Este panel necesita JavaScript para funcionar.
+        </p>
+      </noscript>
+    </main>
+
+    <script>
+      const DIRECCIONES = [
+        { key: "sur", etiqueta: "Sur", ayuda: "SACHAMAMA · primera dirección" },
+        { key: "oeste", etiqueta: "Oeste", ayuda: "OTORONGO · segunda dirección" },
+        { key: "norte", etiqueta: "Norte", ayuda: "COLIBRÍ · tercera dirección" },
+        { key: "este", etiqueta: "Este", ayuda: "ÁGUILA Y CÓNDOR · cuarta dirección" },
+      ];
+
+      const acceso = document.querySelector("#acceso");
+      const panel = document.querySelector("#panel");
+      const mensaje = document.querySelector("#mensaje");
+      const formAcceso = document.querySelector("#form-acceso");
+      const formFechas = document.querySelector("#form-fechas");
+      const btnAcceso = document.querySelector("#btn-acceso");
+      const btnGuardar = document.querySelector("#btn-guardar");
+      const btnSalir = document.querySelector("#btn-salir");
+
+      function mostrarMensaje(texto, tipo) {
+        mensaje.textContent = texto;
+        if (tipo) mensaje.dataset.tipo = tipo;
+        else delete mensaje.dataset.tipo;
+      }
+
+      function crearCampo(id, etiqueta, ayuda, valor) {
+        const label = document.createElement("label");
+        label.htmlFor = id;
+        label.textContent = etiqueta;
+        if (ayuda) {
+          const span = document.createElement("span");
+          span.className = "ayuda";
+          span.textContent = ayuda;
+          label.append(span);
+        }
+        const input = document.createElement("input");
+        input.id = id;
+        input.name = id;
+        input.type = "text";
+        input.autocomplete = "off";
+        input.maxLength = 80;
+        input.value = valor ?? "";
+        return [label, input];
+      }
+
+      function pintarFormulario(fechas) {
+        const direcciones = document.querySelector("#campos-direcciones");
+        direcciones.replaceChildren(
+          ...DIRECCIONES.flatMap(({ key, etiqueta, ayuda }) =>
+            crearCampo(`direccion-${key}`, etiqueta, ayuda, fechas.directions[key]),
+          ),
+        );
+
+        const temazcal = document.querySelector("#campos-temazcal");
+        temazcal.replaceChildren(
+          ...fechas.temazcalEvents.flatMap((evento, indice) => {
+            const titulo = evento.title ? ` · ${evento.title}` : "";
+            return crearCampo(
+              `temazcal-fecha-${indice}`,
+              `Fecha ${indice + 1}${titulo}`,
+              "",
+              evento.date,
+            );
+          }),
+        );
+
+        const maestria = document.querySelector("#campos-maestria");
+        maestria.replaceChildren(
+          ...crearCampo("maestria", "Fecha de la maestría", "", fechas.maestria),
+        );
+      }
+
+      let fechasActuales = null;
+
+      function leerFormulario() {
+        const valor = (id) => document.querySelector(`#${id}`).value;
+        const titulos = fechasActuales?.temazcalEvents ?? [];
+        return {
+          directions: Object.fromEntries(
+            DIRECCIONES.map(({ key }) => [key, valor(`direccion-${key}`)]),
+          ),
+          temazcalEvents: Array.from(
+            document.querySelectorAll("[id^='temazcal-fecha-']"),
+          ).map((input, indice) => ({
+            title: titulos[indice]?.title ?? "",
+            date: input.value,
+          })),
+          maestria: valor("maestria"),
+        };
+      }
+
+      async function pedir(url, opciones = {}) {
+        const respuesta = await fetch(url, {
+          credentials: "same-origin",
+          headers: { "content-type": "application/json" },
+          ...opciones,
+        });
+        const cuerpo = await respuesta.json().catch(() => ({}));
+        if (!respuesta.ok) {
+          const error = new Error(cuerpo.error || "No se ha podido completar la operación.");
+          error.status = respuesta.status;
+          throw error;
+        }
+        return cuerpo;
+      }
+
+      async function cargarFechas() {
+        const { fechas } = await pedir("/api/admin/fechas");
+        fechasActuales = fechas;
+        pintarFormulario(fechas);
+        acceso.hidden = true;
+        panel.hidden = false;
+      }
+
+      async function entrar(password) {
+        await pedir("/api/admin/session", {
+          method: "POST",
+          body: JSON.stringify({ password }),
+        });
+        mostrarMensaje("", null);
+        await cargarFechas();
+      }
+
+      async function guardar() {
+        const { commitSha } = await pedir("/api/admin/fechas", {
+          method: "POST",
+          body: JSON.stringify(leerFormulario()),
+        });
+        const corto = typeof commitSha === "string" ? commitSha.slice(0, 7) : "";
+        mostrarMensaje(
+          `Guardado${corto ? ` (${corto})` : ""}. La web se actualizará en un par de minutos.`,
+          "ok",
+        );
+        await cargarFechas();
+      }
+
+      function volverAlAcceso(texto) {
+        panel.hidden = true;
+        acceso.hidden = false;
+        if (texto) mostrarMensaje(texto, "error");
+      }
+
+      formAcceso.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+        btnAcceso.disabled = true;
+        mostrarMensaje("Comprobando…", null);
+        try {
+          await entrar(document.querySelector("#password").value);
+          formAcceso.reset();
+        } catch (error) {
+          mostrarMensaje(error.message, "error");
+        } finally {
+          btnAcceso.disabled = false;
+        }
+      });
+
+      formFechas.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+        btnGuardar.disabled = true;
+        mostrarMensaje("Guardando…", null);
+        try {
+          await guardar();
+        } catch (error) {
+          if (error.status === 401) volverAlAcceso(error.message);
+          else mostrarMensaje(error.message, "error");
+        } finally {
+          btnGuardar.disabled = false;
+        }
+      });
+
+      btnSalir.addEventListener("click", async () => {
+        try {
+          await pedir("/api/admin/session", { method: "DELETE" });
+        } catch {
+          // Se sale igualmente: la sesión caduca sola.
+        }
+        volverAlAcceso("");
+        mostrarMensaje("Has salido del panel.", null);
+      });
+
+      (async () => {
+        try {
+          const { authenticated } = await pedir("/api/admin/session");
+          if (authenticated) await cargarFechas();
+          else acceso.hidden = false;
+        } catch {
+          acceso.hidden = false;
+        }
+      })();
+    </script>
+  </body>
+</html>
