@@ -8,17 +8,18 @@ export const temazcal: Temazcal = {
     "Lídia Hidalgo, con más de 15 años al servicio, portadora de la chanupa y autorizada por la  abuela Margarita. Maestra chamana.",
   html: `Los Q'eros han visitado y compartido sus enseñanzas en Tarragona varias veces en los 10 años de escuela, los Pampamesayok, Don Alejandro Apaza, Doña Santusa P'aco Ñusta y Altomesayok, Doña María Apaza Quispe, única Kurac akullac auténtica del linaje y la tradición Q'ero y el antropólogo y estudiador de la cultura Q'ero Don Juan Nuñez del Prado y su hijo han impartido cosmología andina, en nuestro espacio en Salomó Tarragona.`,
   background: "bg-maestria",
-      event: {
-        date: "24 y 25 de octubre 2026",
-        title: "TEMAZCAL MIXTO",
-        description: "",
-        },  
-        
-      event2: {
-        date: "20 diciembre 2026 11h",
-        title: "Temazcal de solsticio invierno",
-        description: "",
-        },  
+  events: [
+    {
+      date: "24 y 25 de octubre 2026",
+      title: "TEMAZCAL MIXTO",
+      description: "",
+    },
+    {
+      date: "20 de diciembre 2026, 11h",
+      title: "Temazcal de solsticio invierno",
+      description: "",
+    },
+  ],
         
   benefitsCards: [
     "Depura las vías respiratorias y el aparato digestivo.",

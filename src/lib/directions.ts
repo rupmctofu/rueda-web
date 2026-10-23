@@ -7,7 +7,7 @@ export const directions: Array<Direction> = [
     title: "sur",
     subtitle: "SACHAMAMA",
     description: "El camino del sanador y la sanadora heridos",
-    date: "4-8 de diciembre 2026",
+    date: "4 al 8 de diciembre 2026",
     background: "bg-sur",
     footer: "CONSEGUIRÁS",
     doCards: [
@@ -57,7 +57,7 @@ export const directions: Array<Direction> = [
     title: "oeste",
     subtitle: "OTORONGO",
     description: "El camino del y la guerrera luminosa",
-    date: "4-8 de diciembre 2026",
+    date: "4 al 8 de diciembre 2026",
     html: `En esta dirección, la dirección del poder, <strong class="font-semibold">encaramos los miedos, transformándolos en fuerza y confianza</strong>. La ira (rabia), la sombra y todo lo que conllevan.`,
     background: "bg-oeste",
     footer: "CONSEGUIRÁS",

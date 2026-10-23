@@ -39,8 +39,7 @@ export type Temazcal = {
   description: string;
   html: string;
   background: string;
-  event: TemazcalEvent;
-  event2: TemazcalEvent;
+  events: Array<TemazcalEvent>;
   benefitsCards: Array<string>;
   footer: string;
 };
