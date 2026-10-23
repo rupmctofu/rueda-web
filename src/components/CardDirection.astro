@@ -20,7 +20,14 @@ const { background, image, title, label, html, footer } = Astro.props;
 >
   <header class="flex flex-col gap-2 p-6 pb-0">
     <picture class="w-[250px]">
-      <img src={`/directions/${image}.png`} alt={title} />
+      <img
+        src={`/directions/${image}.png`}
+        alt={title}
+        width="272"
+        height="272"
+        loading="lazy"
+        decoding="async"
+      />
     </picture>
 
     <h3 class="text-6xl font-title">{title}</h3>

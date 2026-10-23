@@ -30,6 +30,8 @@ import Button from "@/components/Button.astro";
             <img
               class="h-[400px] lg:h-[130%] -mt-20 lg:mt-0 z-20 mr-auto"
               src={image}
+              loading="lazy"
+              decoding="async"
             />
 
             <main class="flex flex-col pl-8 lg:pl-0 mt-4 lg:mt-0 mb-72 lg:mb-8">
@@ -38,11 +40,23 @@ import Button from "@/components/Button.astro";
             </main>
 
             <span class="absolute top-[400px] lg:top-auto -translate-y-full lg:translate-y-0 lg:bottom-0 left-0 z-20 pointer-events-none rounded-bl-xl overflow-hidden -mt-20 lg:mt-0">
-              <img src="/facilitadores/left.png" alt="Ornamentación inca" width="250" />
+              <img
+                src="/facilitadores/left.png"
+                alt="Ornamentación inca"
+                width="250"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
 
             <span class="absolute top-0 right-0 z-10 pointer-events-none rounded-tr-xl overflow-hidden">
-              <img src="/facilitadores/right.png" alt="Ornamentación inca" width="200" />
+              <img
+                src="/facilitadores/right.png"
+                alt="Ornamentación inca"
+                width="200"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
           </article>
         </li>
