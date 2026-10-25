@@ -1,6 +1,12 @@
 ---
 import { temazcal } from "@/lib/temazcal";
 import SectionBanner from "@/components/SectionBanner.astro";
+import {
+  FINISHED_FALLBACK,
+  formatEventDate,
+  todayInMadrid,
+  upcomingEvents,
+} from "@/lib/temazcal-events";
 
 const {
   image,
@@ -13,6 +19,9 @@ const {
   benefitsCards,
   footer,
 } = temazcal;
+
+// Los temazcales terminados no llegan al HTML: se descartan al construir.
+const upcoming = upcomingEvents(events, todayInMadrid());
 ---
 
 <SectionBanner image={image} />
@@ -41,23 +50,27 @@ const {
 
  
   {
-    events.map((event) => (
-      <article class="max-w-3xl flex flex-col items-center text-center bg-slate-300 rounded-xl py-8 px-2 w-full mt-16">
-        <time
-          class="font-semibold text-lg text-slate-50 bg-black/70 px-6 py-2 rounded-full"
-          datetime={event.date}
-        >
-          {event.date}
-        </time>
+    upcoming.length === 0 ? (
+      <p class="max-w-3xl text-center text-xl text-black/70 bg-slate-300 rounded-xl py-8 px-2 w-full mt-16">
+        {FINISHED_FALLBACK}
+      </p>
+    ) : (
+      upcoming.map((event) => (
+        <article class="max-w-3xl flex flex-col items-center text-center bg-slate-300 rounded-xl py-8 px-2 w-full mt-16">
+          <time
+            class="font-semibold text-lg text-slate-50 bg-black/70 px-6 py-2 rounded-full"
+            datetime={event.startDate}
+          >
+            {formatEventDate(event)}
+          </time>
 
-        <h3 class="text-black/70 font-semibold text-xl lg:text-2xl mt-4">
-          {event.title}
-        </h3>
-        <p class="max-w-5xl leading-6 text-xl text-black/70">
-          {event.description}
-        </p>
-      </article>
-    ))
+          <h3 class="text-black/70 font-semibold text-xl lg:text-2xl mt-4">
+            {event.title}
+          </h3>
+          <p class="max-w-5xl leading-6 text-xl text-black/70">{event.description}</p>
+        </article>
+      ))
+    )
   }
  
 

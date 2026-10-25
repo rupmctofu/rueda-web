@@ -35,8 +35,13 @@ export type DirectionCard = {
   footer: string;
 };
 
+/** Un temazcal programado. Las fechas son ISO (`YYYY-MM-DD`) y el texto
+ * visible lo genera `@/lib/temazcal-events`; el `id` se conserva al editar
+ * para no depender de la posición en la lista. */
 export type TemazcalEvent = {
-  date: string;
+  id: string;
+  startDate: string;
+  endDate: string;
   title: string;
   description: string;
 };
