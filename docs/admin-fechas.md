@@ -71,13 +71,25 @@ Si no queda ningún temazcal por delante, la sección muestra
 | Horario | `0 4 * * *` (04:00 UTC, 05:00 o 06:00 en Madrid según la época) |
 | Build hook | `Rebuild diario (temazcales caducados)`, rama `master` |
 | Variable | `BUILD_HOOK_URL` con la URL del build hook |
+| Configuración | `netlify.toml` declara `[functions] directory = "netlify/functions"` |
 
-Para cambiar la hora, edita `config.schedule` y vuelve a desplegar. Para
-comprobar que dispara el build, mira **Deploys → deploy con origen
-`build_hook`** al día siguiente, o lanza la función a mano:
+`netlify.toml` no es opcional: sin él, Netlify solo empaqueta
+`.netlify/functions-internal` (las funciones que genera el adaptador de Astro) y
+la función programada no llega al despliegue. Con la sección `[functions]`
+conviven las dos: el panel sigue respondiendo y el cron aparece en
+`function_schedules` del deploy.
+
+Para cambiar la hora, edita `config.schedule` y vuelve a desplegar.
+
+Para comprobar que está registrada, mira el objeto del deploy (`function_schedules`)
+o **Netlify → Functions**, y al día siguiente busca en **Deploys** el deploy con
+origen `build_hook`.
+
+Invocarla a mano con `curl` devuelve `403` (las funciones programadas solo
+aceptan al planificador de Netlify). Para probar el build hook sin esperar:
 
 ```sh
-netlify functions:invoke rebuild-diario
+curl -X POST "$BUILD_HOOK_URL"
 ```
 
 La URL del build hook es un secreto: cualquiera que la tenga puede lanzar
