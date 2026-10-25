@@ -8,15 +8,20 @@ import type { DirectionKey, Fechas, TemazcalEvent } from "@/lib/types";
 
 export const MAX_TEXT_LENGTH = 80;
 export const MAX_TITLE_LENGTH = 120;
+export const MAX_DESCRIPTION_LENGTH = 300;
 export const MAX_EVENTS = 10;
 
 const DIRECTION_KEYS: Array<DirectionKey> = ["sur", "oeste", "norte", "este"];
 const PAYLOAD_KEYS = ["directions", "temazcalEvents", "maestria"];
-const EVENT_KEYS = ["date", "title"];
+const EVENT_KEYS = ["id", "startDate", "endDate", "title", "description"];
+
+/** Identificador estable de un temazcal: minúsculas, números y guiones. */
+const ID_PATTERN = /^[a-z0-9][a-z0-9-]{2,39}$/;
+const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 export type FechasPayload = {
   directions: Record<DirectionKey, string>;
-  temazcalEvents: Array<{ date: string; title: string }>;
+  temazcalEvents: Array<TemazcalEvent>;
   maestria: string;
 };
 
@@ -35,15 +40,24 @@ function hasOnlyKeys(value: Record<string, unknown>, allowed: Array<string>): bo
 /**
  * Normaliza un texto editable: recorta espacios y valida longitud y
  * caracteres. Las fechas pueden quedar vacías (se renderizan en blanco).
+ * En la descripción los saltos de línea se convierten en espacios porque la
+ * web pinta un solo párrafo.
  */
 function parseText(
   value: unknown,
-  options: { label: string; maxLength: number; required: boolean },
+  options: {
+    label: string;
+    maxLength: number;
+    required: boolean;
+    collapseNewlines?: boolean;
+  },
 ): { ok: true; value: string } | { ok: false; error: string } {
   if (typeof value !== "string") {
     return { ok: false, error: `${options.label}: se esperaba texto.` };
   }
-  const text = value.trim();
+  const text = options.collapseNewlines
+    ? value.replace(/\s+/g, " ").trim()
+    : value.trim();
   if (options.required && text.length === 0) {
     return { ok: false, error: `${options.label}: no puede quedar vacío.` };
   }
@@ -59,6 +73,28 @@ function parseText(
       error: `${options.label}: no admite saltos de línea ni los caracteres < o >.`,
     };
   }
+  return { ok: true, value: text };
+}
+
+/** Acepta solo fechas reales en formato `YYYY-MM-DD`. */
+function parseIsoDate(
+  value: unknown,
+  label: string,
+): { ok: true; value: string } | { ok: false; error: string } {
+  const invalid = { ok: false as const, error: `${label} no es válida.` };
+  if (typeof value !== "string") return invalid;
+
+  const text = value.trim();
+  const match = ISO_DATE.exec(text);
+  if (!match) return invalid;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  if (month < 1 || month > 12 || day < 1) return invalid;
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  if (day > daysInMonth) return invalid;
+
   return { ok: true, value: text };
 }
 
@@ -95,27 +131,67 @@ export function parseFechasPayload(input: unknown): ParseResult {
     return { ok: false, error: "Faltan las fechas del temazcal." };
   }
   if (eventsInput.length > MAX_EVENTS) {
-    return { ok: false, error: `El temazcal no puede tener más de ${MAX_EVENTS} fechas.` };
+    return {
+      ok: false,
+      error: `No se pueden programar más de ${MAX_EVENTS} temazcales.`,
+    };
   }
 
-  const temazcalEvents: Array<{ date: string; title: string }> = [];
+  const temazcalEvents: Array<TemazcalEvent> = [];
+  const seenIds = new Set<string>();
+
   for (const [index, event] of eventsInput.entries()) {
+    const position = index + 1;
     if (!isPlainObject(event) || !hasOnlyKeys(event, EVENT_KEYS)) {
-      return { ok: false, error: `El temazcal número ${index + 1} no es válido.` };
+      return { ok: false, error: `El temazcal número ${position} no es válido.` };
     }
-    const date = parseText(event.date, {
-      label: `La fecha del temazcal número ${index + 1}`,
-      maxLength: MAX_TEXT_LENGTH,
-      required: false,
-    });
-    if (!date.ok) return date;
+
+    if (typeof event.id !== "string" || !ID_PATTERN.test(event.id)) {
+      return {
+        ok: false,
+        error: `El identificador del temazcal número ${position} no es válido.`,
+      };
+    }
+    if (seenIds.has(event.id)) {
+      return { ok: false, error: "Hay dos temazcales con el mismo identificador." };
+    }
+    seenIds.add(event.id);
+
+    const startDate = parseIsoDate(event.startDate, `La fecha de inicio del temazcal número ${position}`);
+    if (!startDate.ok) return startDate;
+
+    const endDate = parseIsoDate(event.endDate, `La fecha final del temazcal número ${position}`);
+    if (!endDate.ok) return endDate;
+
+    if (endDate.value < startDate.value) {
+      return {
+        ok: false,
+        error: `La fecha final del temazcal número ${position} no puede ser anterior a la de inicio.`,
+      };
+    }
+
     const title = parseText(event.title, {
-      label: `El título del temazcal número ${index + 1}`,
+      label: `El título del temazcal número ${position}`,
       maxLength: MAX_TITLE_LENGTH,
       required: true,
     });
     if (!title.ok) return title;
-    temazcalEvents.push({ date: date.value, title: title.value });
+
+    const description = parseText(event.description, {
+      label: `La descripción del temazcal número ${position}`,
+      maxLength: MAX_DESCRIPTION_LENGTH,
+      required: false,
+      collapseNewlines: true,
+    });
+    if (!description.ok) return description;
+
+    temazcalEvents.push({
+      id: event.id,
+      startDate: startDate.value,
+      endDate: endDate.value,
+      title: title.value,
+      description: description.value,
+    });
   }
 
   const maestria = parseText(input.maestria, {
@@ -132,22 +208,16 @@ export function parseFechasPayload(input: unknown): ParseResult {
 }
 
 /**
- * Aplica el formulario sobre el contenido actual del fichero de fechas,
- * conservando los campos que el panel no edita (la descripción de cada
- * temazcal). Devuelve un objeto nuevo, listo para serializar.
+ * Contenido del fichero de fechas a partir del formulario. Ya no hay campos
+ * que el panel no edite, así que no se hereda nada del fichero anterior: lo
+ * que se ve en el panel es exactamente lo que se guarda.
+ *
+ * Los temazcales se guardan ordenados por fecha de inicio.
  */
-export function mergeFechas(current: unknown, payload: FechasPayload): Fechas {
-  const stored = isPlainObject(current) ? current : {};
-  const storedEvents = Array.isArray(stored.temazcalEvents) ? stored.temazcalEvents : [];
-
-  const temazcalEvents: Array<TemazcalEvent> = payload.temazcalEvents.map((event, index) => {
-    const previous = storedEvents[index];
-    const description =
-      isPlainObject(previous) && typeof previous.description === "string"
-        ? previous.description
-        : "";
-    return { date: event.date, title: event.title, description };
-  });
+export function mergeFechas(payload: FechasPayload): Fechas {
+  const temazcalEvents = payload.temazcalEvents
+    .map((event) => ({ ...event }))
+    .sort((a, b) => (a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0));
 
   return {
     directions: payload.directions,
@@ -157,8 +227,7 @@ export function mergeFechas(current: unknown, payload: FechasPayload): Fechas {
 }
 
 /**
- * Proyecta el contenido guardado a la forma editable que consume el panel:
- * solo los campos que la clienta puede cambiar.
+ * Proyecta el contenido guardado a la forma editable que consume el panel.
  */
 export function toPayload(current: unknown): FechasPayload {
   const stored = isPlainObject(current) ? current : {};
@@ -171,11 +240,17 @@ export function toPayload(current: unknown): FechasPayload {
     directions[key] = typeof value === "string" ? value : "";
   }
 
+  const text = (event: unknown, key: string) =>
+    isPlainObject(event) && typeof event[key] === "string" ? (event[key] as string) : "";
+
   return {
     directions,
     temazcalEvents: storedEvents.map((event) => ({
-      date: isPlainObject(event) && typeof event.date === "string" ? event.date : "",
-      title: isPlainObject(event) && typeof event.title === "string" ? event.title : "",
+      id: text(event, "id"),
+      startDate: text(event, "startDate"),
+      endDate: text(event, "endDate"),
+      title: text(event, "title"),
+      description: text(event, "description"),
     })),
     maestria: typeof stored.maestria === "string" ? stored.maestria : "",
   };
