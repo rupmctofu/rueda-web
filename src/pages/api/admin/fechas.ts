@@ -100,8 +100,10 @@ export const POST: APIRoute = async ({ request }) => {
 
   const client = githubClient(access.config);
   try {
-    const { content, sha } = await readFechasFile(client);
-    const merged = mergeFechas(content, parsed.value);
+    // El `sha` sigue haciendo falta: es el control de concurrencia de GitHub,
+    // y ya no hay campos ocultos que conservar del fichero anterior.
+    const { sha } = await readFechasFile(client);
+    const merged = mergeFechas(parsed.value);
     const { commitSha } = await commitFechasFile(
       client,
       serializeFechas(merged),

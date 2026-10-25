@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import {
+  MAX_DESCRIPTION_LENGTH,
   MAX_EVENTS,
   MAX_TEXT_LENGTH,
+  MAX_TITLE_LENGTH,
   mergeFechas,
   parseFechasPayload,
   serializeFechas,
@@ -18,17 +20,20 @@ const validPayload = () => ({
     este: "23 al 27 de junio 2027",
   },
   temazcalEvents: [
-    { date: "24 y 25 de octubre 2026", title: "TEMAZCAL MIXTO" },
-    { date: "20 de diciembre 2026, 11h", title: "Temazcal de solsticio invierno" },
-  ],
-  maestria: "Fechas por confirmar",
-});
-
-const storedFile = () => ({
-  directions: validPayload().directions,
-  temazcalEvents: [
-    { date: "24 y 25 de octubre 2026", title: "TEMAZCAL MIXTO", description: "Nota interna" },
-    { date: "20 de diciembre 2026, 11h", title: "Temazcal de solsticio invierno", description: "" },
+    {
+      id: "temazcal-9f2c1a",
+      startDate: "2026-10-24",
+      endDate: "2026-10-25",
+      title: "TEMAZCAL MIXTO",
+      description: "",
+    },
+    {
+      id: "temazcal-4d7e0b",
+      startDate: "2026-12-20",
+      endDate: "2026-12-20",
+      title: "Temazcal de solsticio invierno",
+      description: "A las 11h, trae ropa de cambio.",
+    },
   ],
   maestria: "Fechas por confirmar",
 });
@@ -37,6 +42,12 @@ const errorOf = (input: unknown): string => {
   const result = parseFechasPayload(input);
   assert.equal(result.ok, false, "se esperaba un payload rechazado");
   return result.ok ? "" : result.error;
+};
+
+const withEvent = (changes: Record<string, unknown>) => {
+  const payload = validPayload() as Record<string, any>;
+  payload.temazcalEvents[0] = { ...payload.temazcalEvents[0], ...changes };
+  return payload;
 };
 
 describe("parseFechasPayload", () => {
@@ -48,17 +59,24 @@ describe("parseFechasPayload", () => {
     assert.deepEqual(result.ok && result.value, validPayload());
   });
 
-  it("permite dejar una dirección, un temazcal o la maestría sin fecha", () => {
+  it("permite dejar las direcciones y la maestría sin fecha", () => {
     const payload = validPayload();
     payload.directions.este = "";
     payload.maestria = "";
-    payload.temazcalEvents[0].date = "";
 
     const result = parseFechasPayload(payload);
     assert.equal(result.ok, true);
     assert.equal(result.ok && result.value.directions.este, "");
     assert.equal(result.ok && result.value.maestria, "");
-    assert.equal(result.ok && result.value.temazcalEvents[0].date, "");
+  });
+
+  it("permite quedarse sin ningún temazcal programado", () => {
+    const payload = validPayload();
+    payload.temazcalEvents = [];
+
+    const result = parseFechasPayload(payload);
+    assert.equal(result.ok, true);
+    assert.deepEqual(result.ok && result.value.temazcalEvents, []);
   });
 
   it("rechaza cuerpos que no son un objeto o traen campos de más", () => {
@@ -95,14 +113,14 @@ describe("parseFechasPayload", () => {
     );
 
     const title = validPayload();
-    title.temazcalEvents[1].title = "x".repeat(121);
+    title.temazcalEvents[1].title = "x".repeat(MAX_TITLE_LENGTH + 1);
     assert.equal(
       errorOf(title),
-      "El título del temazcal número 2: no puede superar los 120 caracteres.",
+      `El título del temazcal número 2: no puede superar los ${MAX_TITLE_LENGTH} caracteres.`,
     );
   });
 
-  it("rechaza saltos de línea y los caracteres < o >", () => {
+  it("rechaza saltos de línea y los caracteres < o > en las fechas de las direcciones", () => {
     const newline = validPayload();
     newline.directions.sur = "4 al 8\nde diciembre";
     assert.equal(
@@ -118,77 +136,145 @@ describe("parseFechasPayload", () => {
     );
   });
 
-  it("exige el título del temazcal pero no mezcla campos de más", () => {
-    const emptyTitle = validPayload();
-    emptyTitle.temazcalEvents[0].title = "   ";
+  it("exige el título del temazcal y no acepta campos de más en el evento", () => {
     assert.equal(
-      errorOf(emptyTitle),
+      errorOf(withEvent({ title: "   " })),
       "El título del temazcal número 1: no puede quedar vacío.",
     );
 
-    const withDescription = validPayload() as Record<string, any>;
-    withDescription.temazcalEvents[0].description = "texto que no se edita aquí";
-    assert.equal(errorOf(withDescription), "El temazcal número 1 no es válido.");
+    assert.equal(errorOf(withEvent({ date: "24 y 25 de octubre 2026" })), "El temazcal número 1 no es válido.");
+  });
+
+  it("acepta la descripción vacía y convierte los saltos de línea en espacios", () => {
+    const empty = validPayload();
+    empty.temazcalEvents[0].description = "";
+    assert.equal(parseFechasPayload(empty).ok, true);
+
+    const multiline = validPayload();
+    multiline.temazcalEvents[0].description = "Trae ropa de cambio.\nY toalla.";
+    const result = parseFechasPayload(multiline);
+    assert.equal(result.ok, true);
+    assert.equal(
+      result.ok && result.value.temazcalEvents[0].description,
+      "Trae ropa de cambio. Y toalla.",
+    );
+  });
+
+  it(`rechaza descripciones de más de ${MAX_DESCRIPTION_LENGTH} caracteres`, () => {
+    assert.equal(
+      errorOf(withEvent({ description: "x".repeat(MAX_DESCRIPTION_LENGTH + 1) })),
+      `La descripción del temazcal número 1: no puede superar los ${MAX_DESCRIPTION_LENGTH} caracteres.`,
+    );
+  });
+
+  it("rechaza fechas que no son YYYY-MM-DD o no existen en el calendario", () => {
+    assert.equal(
+      errorOf(withEvent({ startDate: "24/10/2026" })),
+      "La fecha de inicio del temazcal número 1 no es válida.",
+    );
+    assert.equal(
+      errorOf(withEvent({ endDate: "2026-13-01" })),
+      "La fecha final del temazcal número 1 no es válida.",
+    );
+    assert.equal(
+      errorOf(withEvent({ endDate: "2026-02-30" })),
+      "La fecha final del temazcal número 1 no es válida.",
+    );
+    assert.equal(
+      errorOf(withEvent({ startDate: "" })),
+      "La fecha de inicio del temazcal número 1 no es válida.",
+    );
+  });
+
+  it("rechaza una fecha final anterior a la inicial y acepta el mismo día", () => {
+    assert.equal(
+      errorOf(withEvent({ startDate: "2026-10-25", endDate: "2026-10-24" })),
+      "La fecha final del temazcal número 1 no puede ser anterior a la de inicio.",
+    );
+    assert.equal(
+      parseFechasPayload(withEvent({ startDate: "2026-10-24", endDate: "2026-10-24" })).ok,
+      true,
+    );
+  });
+
+  it("rechaza identificadores mal formados o repetidos", () => {
+    assert.equal(
+      errorOf(withEvent({ id: "Temazcal 1" })),
+      "El identificador del temazcal número 1 no es válido.",
+    );
+    assert.equal(
+      errorOf(withEvent({ id: "" })),
+      "El identificador del temazcal número 1 no es válido.",
+    );
+
+    const duplicated = validPayload();
+    duplicated.temazcalEvents[1].id = duplicated.temazcalEvents[0].id;
+    assert.equal(errorOf(duplicated), "Hay dos temazcales con el mismo identificador.");
   });
 
   it(`rechaza más de ${MAX_EVENTS} temazcales y un listado que no sea lista`, () => {
     const tooMany = validPayload() as Record<string, any>;
-    tooMany.temazcalEvents = Array.from({ length: MAX_EVENTS + 1 }, () => ({
-      date: "2027",
+    tooMany.temazcalEvents = Array.from({ length: MAX_EVENTS + 1 }, (_, index) => ({
+      id: `temazcal-${index}`,
+      startDate: "2027-03-01",
+      endDate: "2027-03-02",
       title: "Temazcal",
+      description: "",
     }));
-    assert.equal(
-      errorOf(tooMany),
-      `El temazcal no puede tener más de ${MAX_EVENTS} fechas.`,
-    );
+    assert.equal(errorOf(tooMany), `No se pueden programar más de ${MAX_EVENTS} temazcales.`);
 
     const notList = validPayload() as Record<string, any>;
-    notList.temazcalEvents = { 0: { date: "2027", title: "Temazcal" } };
+    notList.temazcalEvents = { 0: { id: "temazcal-1" } };
     assert.equal(errorOf(notList), "Faltan las fechas del temazcal.");
   });
 });
 
 describe("mergeFechas", () => {
-  it("aplica las fechas nuevas y conserva la descripción que el panel no edita", () => {
+  it("guarda exactamente lo editable, sin campos ocultos ni herencias por posición", () => {
     const payload = validPayload();
     payload.directions.norte = "1 al 5 de mayo 2027";
 
-    const merged = mergeFechas(storedFile(), payload);
+    const merged = mergeFechas(payload);
 
     assert.equal(merged.directions.norte, "1 al 5 de mayo 2027");
-    assert.equal(merged.temazcalEvents[0].description, "Nota interna");
-    assert.equal(merged.temazcalEvents[0].title, "TEMAZCAL MIXTO");
+    assert.deepEqual(merged.temazcalEvents[0], payload.temazcalEvents[0]);
     assert.deepEqual(Object.keys(merged), ["directions", "temazcalEvents", "maestria"]);
-    assert.deepEqual(Object.keys(merged.temazcalEvents[0]), ["date", "title", "description"]);
+    assert.deepEqual(Object.keys(merged.temazcalEvents[0]), [
+      "id",
+      "startDate",
+      "endDate",
+      "title",
+      "description",
+    ]);
   });
 
-  it("no falla si el fichero actual está vacío o no tiene eventos", () => {
-    const merged = mergeFechas(undefined, validPayload());
-    assert.equal(merged.temazcalEvents.length, 2);
-    assert.deepEqual(merged.temazcalEvents[0], {
-      date: "24 y 25 de octubre 2026",
-      title: "TEMAZCAL MIXTO",
-      description: "",
-    });
-  });
-
-  it("al añadir un temazcal nuevo le deja la descripción vacía", () => {
+  it("ordena el fichero por fecha de inicio", () => {
     const payload = validPayload();
-    payload.temazcalEvents.push({ date: "1 de marzo 2027", title: "Temazcal de primavera" });
+    payload.temazcalEvents.reverse();
 
-    const merged = mergeFechas(storedFile(), payload);
+    const merged = mergeFechas(payload);
 
-    assert.deepEqual(merged.temazcalEvents[2], {
-      date: "1 de marzo 2027",
-      title: "Temazcal de primavera",
-      description: "",
-    });
+    assert.deepEqual(
+      merged.temazcalEvents.map((event) => event.id),
+      ["temazcal-9f2c1a", "temazcal-4d7e0b"],
+    );
+  });
+
+  it("al quitar un temazcal desaparece del fichero sin arrastrar su descripción", () => {
+    const payload = validPayload();
+    payload.temazcalEvents = [payload.temazcalEvents[1]];
+
+    const merged = mergeFechas(payload);
+
+    assert.equal(merged.temazcalEvents.length, 1);
+    assert.equal(merged.temazcalEvents[0].id, "temazcal-4d7e0b");
+    assert.equal(merged.temazcalEvents[0].description, "A las 11h, trae ropa de cambio.");
   });
 });
 
 describe("toPayload y serializeFechas", () => {
-  it("proyecta el fichero guardado a la forma editable, sin descripciones", () => {
-    assert.deepEqual(toPayload(storedFile()), validPayload());
+  it("proyecta el fichero guardado a la forma editable, con descripciones", () => {
+    assert.deepEqual(toPayload(validPayload()), validPayload());
   });
 
   it("proyecta un fichero incompleto a valores vacíos sin romperse", () => {
@@ -197,18 +283,29 @@ describe("toPayload y serializeFechas", () => {
       temazcalEvents: [],
       maestria: "",
     });
+
+    const halfEvent = toPayload({
+      temazcalEvents: [{ id: "temazcal-1", title: "Solo título" }],
+    });
+    assert.deepEqual(halfEvent.temazcalEvents[0], {
+      id: "temazcal-1",
+      startDate: "",
+      endDate: "",
+      title: "Solo título",
+      description: "",
+    });
   });
 
   it("serializa con sangría de dos espacios y salto de línea final", () => {
-    const serialized = serializeFechas(storedFile() as any);
+    const serialized = serializeFechas(mergeFechas(validPayload()));
     assert.ok(serialized.endsWith("}\n"));
     assert.ok(serialized.includes('\n  "directions": {'));
-    assert.deepEqual(JSON.parse(serialized), storedFile());
+    assert.deepEqual(JSON.parse(serialized), validPayload());
   });
 
   it("ida y vuelta: guardar y volver a leer no pierde nada de lo editable", () => {
     const payload = validPayload();
-    const saved = JSON.parse(serializeFechas(mergeFechas(storedFile(), payload)));
+    const saved = JSON.parse(serializeFechas(mergeFechas(payload)));
     assert.deepEqual(toPayload(saved), payload);
   });
 });

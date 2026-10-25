@@ -1,0 +1,9 @@
+# El adaptador de Astro escribe sus funciones en `.netlify/functions-internal`.
+# Estas líneas declaran además `netlify/functions`, donde vive la función
+# programada que reconstruye el sitio cada día.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"

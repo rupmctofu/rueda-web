@@ -79,7 +79,8 @@
         color: #55707a;
       }
 
-      input {
+      input,
+      textarea {
         width: 100%;
         margin-top: 0.3rem;
         padding: 0.55rem 0.7rem;
@@ -90,7 +91,13 @@
         background: #fdfdfc;
       }
 
-      input:focus-visible {
+      textarea {
+        min-height: 4.5rem;
+        resize: vertical;
+      }
+
+      input:focus-visible,
+      textarea:focus-visible {
         outline: 2px solid var(--teal);
         outline-offset: 1px;
       }
@@ -151,6 +158,42 @@
         margin: 0.75rem 0 0;
       }
 
+      .evento {
+        border: 1px solid var(--borde);
+        border-radius: 0.6rem;
+        background: #faf9f6;
+        padding: 0.85rem 0.9rem 1rem;
+        margin-top: 0.9rem;
+      }
+
+      .cabecera-evento {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .cabecera-evento strong {
+        color: var(--teal);
+        font-size: 0.95rem;
+      }
+
+      button.peligro {
+        color: var(--error);
+        border-color: #e0c4be;
+        padding: 0.35rem 0.9rem;
+      }
+
+      .fechas-evento {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .fechas-evento > label {
+        flex: 1 1 10rem;
+      }
+
       [hidden] {
         display: none !important;
       }
@@ -195,7 +238,14 @@
 
           <fieldset>
             <legend>Temazcal</legend>
+            <p class="nota">
+              Cada temazcal lleva su título, su descripción y sus fechas. Elige
+              las fechas en el calendario: el texto de la web se escribe solo.
+            </p>
             <div id="campos-temazcal"></div>
+            <div class="acciones">
+              <button type="button" id="btn-anadir">Añadir temazcal</button>
+            </div>
           </fieldset>
 
           <fieldset>
@@ -208,8 +258,10 @@
             <button type="button" id="btn-salir">Salir</button>
           </div>
           <p class="nota">
-            Para dejar una fecha en blanco, borra su texto y guarda: en la web
-            aparecerá vacía.
+            Cuando la fecha final de un temazcal ya ha pasado, desaparece de la
+            web por su cuenta. Si no queda ninguno, la web muestra «Fechas por
+            confirmar». Para dejar una fecha de dirección en blanco, borra su
+            texto y guarda.
           </p>
         </form>
       </section>
@@ -230,6 +282,10 @@
         { key: "este", etiqueta: "Este", ayuda: "ÁGUILA Y CÓNDOR · cuarta dirección" },
       ];
 
+      const MAX_TITULO = 120;
+      const MAX_DESCRIPCION = 300;
+      const MAX_EVENTOS = 10;
+
       const acceso = document.querySelector("#acceso");
       const panel = document.querySelector("#panel");
       const mensaje = document.querySelector("#mensaje");
@@ -238,6 +294,8 @@
       const btnAcceso = document.querySelector("#btn-acceso");
       const btnGuardar = document.querySelector("#btn-guardar");
       const btnSalir = document.querySelector("#btn-salir");
+      const btnAnadir = document.querySelector("#btn-anadir");
+      const listaTemazcal = document.querySelector("#campos-temazcal");
 
       function mostrarMensaje(texto, tipo) {
         mensaje.textContent = texto;
@@ -245,7 +303,14 @@
         else delete mensaje.dataset.tipo;
       }
 
-      function crearCampo(id, etiqueta, ayuda, valor) {
+      /** Identificador nuevo para un temazcal añadido desde el panel. */
+      function nuevoId() {
+        const bytes = crypto.getRandomValues(new Uint8Array(4));
+        const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+        return `temazcal-${hex}`;
+      }
+
+      function crearEtiqueta(etiqueta, ayuda, id) {
         const label = document.createElement("label");
         label.htmlFor = id;
         label.textContent = etiqueta;
@@ -255,14 +320,148 @@
           span.textContent = ayuda;
           label.append(span);
         }
+        return label;
+      }
+
+      function crearCampoTexto({ id, campo, etiqueta, ayuda, valor, maxLength }) {
         const input = document.createElement("input");
         input.id = id;
         input.name = id;
         input.type = "text";
         input.autocomplete = "off";
-        input.maxLength = 80;
+        if (maxLength) input.maxLength = maxLength;
         input.value = valor ?? "";
-        return [label, input];
+        input.dataset.campo = campo;
+        return [crearEtiqueta(etiqueta, ayuda, id), input];
+      }
+
+      function crearCampoFecha({ id, campo, etiqueta, valor }) {
+        const input = document.createElement("input");
+        input.id = id;
+        input.name = id;
+        input.type = "date";
+        input.required = true;
+        input.value = valor ?? "";
+        input.dataset.campo = campo;
+        return [crearEtiqueta(etiqueta, "", id), input];
+      }
+
+      function crearCampoDescripcion({ id, valor }) {
+        const textarea = document.createElement("textarea");
+        textarea.id = id;
+        textarea.name = id;
+        textarea.rows = 3;
+        textarea.maxLength = MAX_DESCRIPCION;
+        textarea.value = valor ?? "";
+        textarea.dataset.campo = "description";
+        return [
+          crearEtiqueta("Descripción", "Opcional. Se lee debajo del título de la fecha.", id),
+          textarea,
+        ];
+      }
+
+      function crearCampo(id, etiqueta, ayuda, valor) {
+        return crearCampoTexto({ id, campo: id, etiqueta, ayuda, valor, maxLength: 80 });
+      }
+
+      /** Pinta la tarjeta de un temazcal con sus cuatro campos. */
+      function crearEvento(evento) {
+        const tarjeta = document.createElement("div");
+        tarjeta.className = "evento";
+        tarjeta.dataset.id = evento.id || nuevoId();
+
+        const cabecera = document.createElement("div");
+        cabecera.className = "cabecera-evento";
+
+        const numero = document.createElement("strong");
+        numero.dataset.rol = "numero";
+        numero.textContent = "Temazcal";
+
+        const eliminar = document.createElement("button");
+        eliminar.type = "button";
+        eliminar.className = "peligro";
+        eliminar.textContent = "Eliminar este temazcal";
+        eliminar.addEventListener("click", () => {
+          tarjeta.remove();
+          renumerarEventos();
+        });
+
+        cabecera.append(numero, eliminar);
+
+        const sufijo = tarjeta.dataset.id;
+        const fechas = document.createElement("div");
+        fechas.className = "fechas-evento";
+
+        const inicio = crearCampoFecha({
+          id: `fecha-inicio-${sufijo}`,
+          campo: "startDate",
+          etiqueta: "Primer día",
+          valor: evento.startDate,
+        });
+        const fin = crearCampoFecha({
+          id: `fecha-fin-${sufijo}`,
+          campo: "endDate",
+          etiqueta: "Último día",
+          valor: evento.endDate,
+        });
+
+        const inicioInput = inicio[1];
+        const finInput = fin[1];
+        const ajustarMinimo = () => {
+          if (inicioInput.value) finInput.min = inicioInput.value;
+          else finInput.removeAttribute("min");
+          if (!finInput.value) finInput.value = inicioInput.value;
+        };
+        inicioInput.addEventListener("change", ajustarMinimo);
+        if (inicioInput.value) finInput.min = inicioInput.value;
+
+        fechas.append(...inicio, ...fin);
+
+        tarjeta.append(
+          cabecera,
+          ...crearCampoTexto({
+            id: `titulo-${sufijo}`,
+            campo: "title",
+            etiqueta: "Título",
+            ayuda: "Por ejemplo: TEMAZCAL MIXTO",
+            valor: evento.title,
+            maxLength: MAX_TITULO,
+          }),
+          ...crearCampoDescripcion({ id: `descripcion-${sufijo}`, valor: evento.description }),
+          fechas,
+        );
+
+        return tarjeta;
+      }
+
+      function renumerarEventos() {
+        const tarjetas = Array.from(listaTemazcal.querySelectorAll(".evento"));
+        tarjetas.forEach((tarjeta, indice) => {
+          tarjeta.querySelector("[data-rol='numero']").textContent = `Temazcal ${indice + 1}`;
+        });
+
+        const vacio = listaTemazcal.querySelector("[data-rol='vacio']");
+        if (tarjetas.length === 0 && !vacio) {
+          const aviso = document.createElement("p");
+          aviso.className = "nota";
+          aviso.dataset.rol = "vacio";
+          aviso.textContent =
+            "Ahora mismo no hay ningún temazcal programado: la web mostrará «Fechas por confirmar».";
+          listaTemazcal.append(aviso);
+        } else if (tarjetas.length > 0 && vacio) {
+          vacio.remove();
+        }
+
+        btnAnadir.disabled = tarjetas.length >= MAX_EVENTOS;
+        btnAnadir.textContent =
+          tarjetas.length >= MAX_EVENTOS
+            ? `Máximo ${MAX_EVENTOS} temazcales`
+            : "Añadir temazcal";
+      }
+
+      function pintarTemazcal(eventos) {
+        listaTemazcal.replaceChildren(...eventos.map((evento) => crearEvento(evento)));
+        renumerarEventos();
       }
 
       function pintarFormulario(fechas) {
@@ -273,18 +472,7 @@
           ),
         );
 
-        const temazcal = document.querySelector("#campos-temazcal");
-        temazcal.replaceChildren(
-          ...fechas.temazcalEvents.flatMap((evento, indice) => {
-            const titulo = evento.title ? ` · ${evento.title}` : "";
-            return crearCampo(
-              `temazcal-fecha-${indice}`,
-              `Fecha ${indice + 1}${titulo}`,
-              "",
-              evento.date,
-            );
-          }),
-        );
+        pintarTemazcal(fechas.temazcalEvents);
 
         const maestria = document.querySelector("#campos-maestria");
         maestria.replaceChildren(
@@ -292,23 +480,46 @@
         );
       }
 
-      let fechasActuales = null;
+      function leerTemazcal() {
+        return Array.from(listaTemazcal.querySelectorAll(".evento")).map((tarjeta) => {
+          const valor = (campo) => tarjeta.querySelector(`[data-campo='${campo}']`).value;
+          return {
+            id: tarjeta.dataset.id,
+            startDate: valor("startDate"),
+            endDate: valor("endDate"),
+            title: valor("title"),
+            description: valor("description"),
+          };
+        });
+      }
 
       function leerFormulario() {
         const valor = (id) => document.querySelector(`#${id}`).value;
-        const titulos = fechasActuales?.temazcalEvents ?? [];
         return {
           directions: Object.fromEntries(
             DIRECCIONES.map(({ key }) => [key, valor(`direccion-${key}`)]),
           ),
-          temazcalEvents: Array.from(
-            document.querySelectorAll("[id^='temazcal-fecha-']"),
-          ).map((input, indice) => ({
-            title: titulos[indice]?.title ?? "",
-            date: input.value,
-          })),
+          temazcalEvents: leerTemazcal(),
           maestria: valor("maestria"),
         };
+      }
+
+      /** Comprobaciones que el navegador no hace solo, con mensajes claros. */
+      function revisarTemazcal(eventos) {
+        eventos.forEach((evento, indice) => {
+          const numero = indice + 1;
+          if (evento.title.trim().length === 0) {
+            throw new Error(`El temazcal ${numero}: escribe un título.`);
+          }
+          if (!evento.startDate || !evento.endDate) {
+            throw new Error(`El temazcal ${numero}: elige el primer y el último día.`);
+          }
+          if (evento.endDate < evento.startDate) {
+            throw new Error(
+              `El temazcal ${numero}: el último día no puede ser anterior al primero.`,
+            );
+          }
+        });
       }
 
       async function pedir(url, opciones = {}) {
@@ -328,7 +539,6 @@
 
       async function cargarFechas() {
         const { fechas } = await pedir("/api/admin/fechas");
-        fechasActuales = fechas;
         pintarFormulario(fechas);
         acceso.hidden = true;
         panel.hidden = false;
@@ -344,9 +554,11 @@
       }
 
       async function guardar() {
+        const cuerpo = leerFormulario();
+        revisarTemazcal(cuerpo.temazcalEvents);
         const { commitSha } = await pedir("/api/admin/fechas", {
           method: "POST",
-          body: JSON.stringify(leerFormulario()),
+          body: JSON.stringify(cuerpo),
         });
         const corto = typeof commitSha === "string" ? commitSha.slice(0, 7) : "";
         mostrarMensaje(
@@ -361,6 +573,15 @@
         acceso.hidden = false;
         if (texto) mostrarMensaje(texto, "error");
       }
+
+      btnAnadir.addEventListener("click", () => {
+        if (listaTemazcal.querySelectorAll(".evento").length >= MAX_EVENTOS) return;
+        listaTemazcal.append(
+          crearEvento({ id: nuevoId(), startDate: "", endDate: "", title: "", description: "" }),
+        );
+        renumerarEventos();
+        listaTemazcal.querySelector(".evento:last-of-type input")?.focus();
+      });
 
       formAcceso.addEventListener("submit", async (evento) => {
         evento.preventDefault();

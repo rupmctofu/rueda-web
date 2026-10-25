@@ -7,12 +7,16 @@
   },
   "temazcalEvents": [
     {
-      "date": "24 y 25 de octubre 2026",
+      "id": "temazcal-9f2c1a",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-25",
       "title": "TEMAZCAL MIXTO",
       "description": ""
     },
     {
-      "date": "20 de diciembre 2026, 11h",
+      "id": "temazcal-4d7e0b",
+      "startDate": "2026-12-20",
+      "endDate": "2026-12-20",
       "title": "Temazcal de solsticio invierno",
       "description": ""
     }

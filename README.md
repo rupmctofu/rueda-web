@@ -56,10 +56,16 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 ## Panel de fechas (/admin)
 
 La web incluye un panel con contraseña para actualizar las fechas de las
-direcciones, del temazcal y de la maestría. Las fechas se guardan en
+direcciones, del temazcal y de la maestría, y para añadir, editar o quitar
+temazcales (título, descripción y fechas). Las fechas se guardan en
 `src/data/fechas.json` y el panel hace un commit en el repositorio, de modo que
 Netlify redespliega solo.
 
+Los temazcales terminados desaparecen del HTML publicado: el filtro se aplica
+al construir y una función programada reconstruye el sitio cada día para que
+caduquen sin intervención. Si no queda ninguno, la sección muestra
+«Fechas por confirmar».
+
 - Documentación y variables de entorno: [`docs/admin-fechas.md`](docs/admin-fechas.md)
-- Tests de la lógica del panel: `npm test` (runner nativo de Node, sin
-  dependencias nuevas)
+- Tests de la lógica del panel y de las fechas del temazcal: `npm test` (runner
+  nativo de Node, sin dependencias nuevas)
